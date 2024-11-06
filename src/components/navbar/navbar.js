@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./styles/navbar.module.css";
 import MobileMenu from "./mobileMenu";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  useEffect(() => {
-    console.log("El estado de isOpen es:", isOpen);
-  }, [isOpen]);
 
   return (
     <div className="bg-slate-600 p-3">
@@ -31,7 +28,7 @@ const Navbar = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              d={isOpen ? "" : "M4 6h16M4 12h16M4 18h16"}
+              d={isOpen ? " " : "M4 6h16M4 12h16M4 18h16"}
             ></path>
           </svg>
         </button>
