@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import styles from "./styles/navbar.module.css";
 import MobileMenu from "./mobileMenu";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const handleMenuClick = (route) => {
+    navigate(route);
+    setIsOpen(false);
+  };
 
   return (
-    <div className="bg-slate-600 p-3">
+    <div className="relative z-10 bg-slate-600 p-3">
       <nav className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <h1 className="text-2xl font-bold text-white">Happy Work</h1>
@@ -61,7 +67,8 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent rounded">
+              <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent rounded"
+              onClick={()=>handleMenuClick("/auth/login")}>
                 Iniciar Sesión
               </button>
             </li>

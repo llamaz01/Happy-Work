@@ -11,7 +11,7 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
   };
 
   return (
-    <div className="">
+    <div>
       <div
         className={`fixed top-0 left-0 w-full h-full z-50 bg-gray-800 bg-opacity-90 bg-colorPrimario transform  ${
           isOpen ? "" : "-translate-x-full"
@@ -59,7 +59,10 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
             Empresas
           </button>
 
-          <button className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded">
+          <button
+            className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded"
+            onClick={() => handleMenuClick("/auth/login")}
+          >
             Iniciar Sesión
           </button>
         </div>
