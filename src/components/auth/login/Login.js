@@ -1,29 +1,5 @@
 import React from "react";
 import styles from "./styles/login.module.css";
-import "./styles/login.css";
-
-// const Login = () => {
-//   return (
-//     <div className="relative w-screen h-screen  flex justify-center items-center text-white">
-//       <div class="grid grid-cols-2 gap-0">
-//         <div
-//           class={`bg-blue-500 p-4 text-white w-96 h-96 ${styles.content_image_login}`}
-//           style={{
-//             backgroundImage: "url('/image/empoderatuvoz.png')",
-//             backgroundSize: "cover",
-//             backgroundPosition: "center",
-//             backgroundRepeat: "no-repeat",
-//             width:"80vh",
-//             height: "80vh",
-//           }}
-//         ></div>
-//         <div class={`bg-white p-4 text-black" ${styles.content_login}`}>Div 2</div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Login;
 
 const Login = () => {
   return (
