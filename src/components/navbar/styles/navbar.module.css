@@ -9,6 +9,7 @@
   box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
   clip-path: polygon(5% 0, 100% 0, 100% 100%, 1% 100%);
   transition: all 0.3s ease-in-out;
+  z-index: 1;
 }
 
 .hamburger_menu {
