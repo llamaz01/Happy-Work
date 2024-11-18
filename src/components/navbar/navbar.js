@@ -15,8 +15,14 @@ const Navbar = () => {
     <div className="relative z-10 bg-slate-600 p-3">
       <nav className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-2xl font-bold text-white">Happy Work</h1>
-
+        <div className={styles.clickable}>
+          <h1
+            className={`text-2xl font-bold text-white ${styles.fadein}`}
+            onClick={() => handleMenuClick("/home")}
+          >
+            Happy Work
+          </h1>
+        </div>
         {/* Botón de menú para móviles */}
         <button
           className={`${styles.hamburger_menu} text-white md:hidden`}
@@ -67,8 +73,10 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent rounded"
-              onClick={()=>handleMenuClick("/auth/login")}>
+              <button
+                className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent rounded"
+                onClick={() => handleMenuClick("/auth/login")}
+              >
                 Iniciar Sesión
               </button>
             </li>
