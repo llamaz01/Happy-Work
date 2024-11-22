@@ -12,15 +12,14 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar />  {/* Navbar debe estar fuera de Routes */}
+        <Navbar /> {/* Navbar debe estar fuera de Routes */}
         <Routes>
-          {/* Aquí defines tus rutas */}
-          <Route path="/home" element={<Home/>} />
-          <Route path="/auth/login" element={<Login/>}/>;
-          <Route path="/" element={<Home/>}/>
+          <Route path="/home" element={<Home />} />
+          <Route path="/auth/login" element={<Login />} />
           <Route path="/about" element={<h1>Acerca de</h1>} />
           <Route path="/contact" element={<h1>Contacto</h1>} />
-          <Route path="/auth/register" element={<Register/>}/>
+          <Route path="/auth/register" element={<Register />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </div>
     </Router>
