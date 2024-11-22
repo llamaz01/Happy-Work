@@ -4,7 +4,7 @@ import styles from "./styles/register.module.css";
 
 const Register = () => {
   return (
-    <div className="relative w-screen h-screen flex justify-center items-center text-white pt-16 z-0">
+    <div className="relative w-screen h-screen flex justify-center items-center text-white pt-16 z-0 mb-10">
       <div className="grid grid-cols-1 md:grid-cols-2 ">
         {/* Imagen contenedor */}
         <div
@@ -15,7 +15,6 @@ const Register = () => {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             objectFit: "contain",
-            height: "80vh",
           }}
         >
           {/* Animación de escritura */}
@@ -42,10 +41,7 @@ const Register = () => {
           className={`bg-white p-4 text-black flex justify-center items-center top-10 ${styles.content_login}`}
         >
           <div className="w-full max-w-md border-2 border-gray-100 rounded-lg p-4 ">
-            <h3 className="text-3xl font-bold mb-8 mt-4 text-blue-950 text-center">
-              Happy Work
-            </h3>
-
+            <img src="/image/logo.png" alt="logo" />
             <h3 className="text-lg font-semibold mt-4 text-blue-950">
               Registrarme
             </h3>

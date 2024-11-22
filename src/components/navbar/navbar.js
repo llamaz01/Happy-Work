@@ -12,16 +12,19 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative z-10 bg-slate-600 p-3">
+    <div className="relative z-10 bg-slate-600 p-3 h-14">
       <nav className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className={styles.clickable}>
-          <h1
+          <img
+            src="/image/logo2.png"
+            alt="logo"
+            height={200}
+            width={150}
             className={`text-2xl font-bold text-white ${styles.fadein}`}
             onClick={() => handleMenuClick("/home")}
-          >
-            Happy Work
-          </h1>
+          />
+          
         </div>
         {/* Botón de menú para móviles */}
         <button
