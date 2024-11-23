@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./styles/navbar.module.css";
 import MobileMenu from "./mobileMenu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,12 +60,12 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a
-                href="#comentarios"
+            <Link
+                to="/comments"
                 className="font-semibold hover:text-blue-700 text-blue-950"
               >
                 Comentarios
-              </a>
+              </Link>
             </li>
             <li>
               <a

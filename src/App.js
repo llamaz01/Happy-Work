@@ -8,6 +8,7 @@ import Navbar from "./components/navbar/navbar";
 import Home from "./components/home/home";
 import Login from "./components/auth/login/Login";
 import Register from "./components/auth/register/Register";
+import Comments from "./components/comments/home-comments";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/about" element={<h1>Acerca de</h1>} />
           <Route path="/contact" element={<h1>Contacto</h1>} />
           <Route path="/auth/register" element={<Register />} />
+          <Route path="/comments" element={<Comments />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
