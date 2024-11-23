@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { history } from "./components/utils/history";
 
 import "./App.css";
 import "./index.css";
@@ -10,7 +11,7 @@ import Register from "./components/auth/register/Register";
 
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <div>
         <Navbar /> {/* Navbar debe estar fuera de Routes */}
         <Routes>
