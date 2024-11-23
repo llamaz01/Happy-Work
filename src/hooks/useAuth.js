@@ -25,15 +25,20 @@ const useAuth = () => {
       return res.data;
     } catch (error) {
       setError(true);
+
       if (error.response) {
         setErrorResponse(error.response.data);
+        console.error("Error con respuesta del servidor:", error.response.data);
+      } else if (error.request) {
+        console.error("No se recibió respuesta del servidor:");
       } else {
-        // Manejar el caso en el que no hay una respuesta de error definida
-        console.error("No hay respuesta de error definida");
+        console.error("Error al configurar la solicitud:");
       }
 
       setIsLoading(false);
-      return error.response.data;
+      return {
+        error: error.response?.data || error.message || "Error desconocido",
+      };
     } finally {
       setIsLoading(false);
     }
