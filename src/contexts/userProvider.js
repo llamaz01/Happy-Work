@@ -4,7 +4,9 @@ import { history } from "../components/utils/history";
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [token, setToken] = useState(() => localStorage.getItem("token") || null);
+  const [token, setToken] = useState(
+    () => localStorage.getItem("token") || null
+  );
   const [userData, setUserData] = useState(() => {
     const storedData = localStorage.getItem("userData");
     try {
@@ -16,12 +18,17 @@ export const UserProvider = ({ children }) => {
   });
 
   const login = (token, userInfo) => {
-    setToken(token);
-    setUserData(userInfo);
-    localStorage.setItem("token", token);
-    localStorage.setItem("userData", JSON.stringify(userInfo));
-    history.push("/home"); 
-    window.location.reload();
+    if (userInfo == null) {
+      console.error("No se pudieron obtener los datos");
+      return;
+    } else {
+      setToken(token);
+      setUserData(userInfo);
+      localStorage.setItem("token", token);
+      localStorage.setItem("userData", JSON.stringify(userInfo));
+      history.push("/home");
+      window.location.reload();
+    }
   };
 
   const logout = () => {
@@ -29,7 +36,7 @@ export const UserProvider = ({ children }) => {
     setUserData(null);
     localStorage.removeItem("token");
     localStorage.removeItem("userData");
-    history.push("/auth/login"); 
+    history.push("/auth/login");
     window.location.reload();
   };
 

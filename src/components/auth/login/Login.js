@@ -20,9 +20,15 @@ const Login = () => {
 
   useEffect(() => {
     if (data && !error) {
-      saveUser(data.token, data.user);
+      console.log(data.token);
+      saveUser(data.token, {
+        _id: data._id,
+        name: data.name,
+        email: data.email,
+      });
     }
-  }, [data, error, saveUser]);
+  }, [data, error]);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -78,7 +84,6 @@ const Login = () => {
             <hr className="my-4 border-t-2 border-gray-100" />
 
             <div className="text-center">
-              {console.log(errorResponse)}
               {errorResponse?.message && (
                 <div className="text-red-500 text-sm mt-2">
                   {errorResponse.message}
