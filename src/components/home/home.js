@@ -39,7 +39,7 @@ const Home = () => {
         </div>
         <div
           className={styles.card}
-          onClick={() => handleNavigate("/comentarios")}
+          onClick={() => handleNavigate("/comments")}
         >
           <img src="/image/comentarios.jpeg" alt="Comentarios" />
           <p>Comentarios</p>
