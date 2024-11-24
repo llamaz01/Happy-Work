@@ -1,89 +1,124 @@
 .container {
-    padding: 20px;
-    font-family: "Inter", sans-serif;
-  }
-  
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.searchContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.searchInput {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.addCommentButton {
+  padding: 8px 12px;
+  background-color: rgb(59, 80, 108);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addCommentButton:hover {
+  background-color: rgb(33, 63, 102);
+}
+
+.empresasList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.empresaCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.empresaInfo h2 {
+  margin: 0 0 5px;
+  font-size: 1.2rem;
+}
+
+.empresaInfo p {
+  margin: 0;
+  color: #666;
+}
+
+.empresaActions p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.ratingStars {
+  color: #ffbc00;
+}
+
+.commentsButton {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.commentsButton:hover {
+  color: #0056b3;
+}
+
+/* responsive */
+@media (max-width: 768px) {
   .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .header h1 {
-    font-size: 1.5rem;
-    margin: 0;
-  }
-  
-  .searchContainer {
-    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 10px;
   }
-  
-  .searchInput {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    flex: 1;
-  }
-  
-  .addCommentButton {
-    padding: 8px 12px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .addCommentButton:hover {
-    background-color: #444;
-  }
-  
-  .empresasList {
-    display: flex;
+
+  .searchContainer {
     flex-direction: column;
-    gap: 20px;
   }
-  
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .addCommentButton {
+    width: 100%;
+    text-align: center;
+  }
+
   .empresaCard {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
-  
+
   .empresaInfo h2 {
-    margin: 0 0 5px;
-    font-size: 1.2rem;
-  }
-  
-  .empresaInfo p {
-    margin: 0;
-    color: #666;
-  }
-  
-  .empresaActions p {
-    margin: 0;
     font-size: 1rem;
   }
-  
-  .ratingStars {
-    color: #ffbc00;
+
+  .empresaActions p {
+    font-size: 0.9rem;
   }
-  
-  .commentsButton {
-    background: none;
-    border: none;
-    color: #007bff;
-    cursor: pointer;
-    text-decoration: underline;
-  }
-  
-  .commentsButton:hover {
-    color: #0056b3;
-  }
-  
+}
