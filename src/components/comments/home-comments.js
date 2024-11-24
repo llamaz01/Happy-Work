@@ -8,7 +8,7 @@ const Comments = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Llamada a la API para obtener los datos de las empresas
+    // Llamada a la API para obtener los datos de las empresasw
     const fetchEmpresas = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/comments/companies/data");
