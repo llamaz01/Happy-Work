@@ -51,16 +51,16 @@ const Register = () => {
   const onSubmit = async () => {
     const error = validateForm();
     if (error) {
-      setValidationError(error); 
+      setValidationError(error);
       return;
     }
-    setValidationError(""); 
+    setValidationError("");
     await postRegisterUser(formData);
   };
 
   return (
     <div
-      className={`relative w-screen h-screen flex justify-center items-center text-white pt-16 z-0`}
+      className={`relative w-screen flex justify-center items-center text-white pt-16 z-0`}
     >
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Imagen contenedor con animación */}
@@ -82,10 +82,9 @@ const Register = () => {
             <hr className="my-4 border-t-2 border-gray-100" />
 
             <div className="text-red-500 text-sm mt-2">
-              {errorResponse?.message ||
-                (validationError && validationError.message)}
+              {validationError && <p>{validationError}</p>}
+              {errorResponse?.message && <p>{errorResponse.message}</p>}
             </div>
-
             {/* Usando el subcomponente InputField para los campos */}
             <InputField
               label="Nombre"

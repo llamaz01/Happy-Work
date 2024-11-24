@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import styles from "./styles/navbar.module.css";
 import MobileMenu from "./mobileMenu";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useUser } from "../../contexts/userProvider";
+import Submenu from "./submenu";
+import { FaChevronDown } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showMenu, setShowMenu] = useState(false); 
   const navigate = useNavigate();
+  const { user, logout } = useUser(); 
+
   const handleMenuClick = (route) => {
     navigate(route);
     setIsOpen(false);
   };
 
   return (
-    <div className="relative z-10 bg-slate-600 p-3 h-14">
+    <div className={`relative bg-slate-600 p-3 h-14 ${styles.content_nav}`}>
       <nav className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className={styles.clickable}>
@@ -24,7 +30,6 @@ const Navbar = () => {
             className={`text-2xl font-bold text-white ${styles.fadein}`}
             onClick={() => handleMenuClick("/home")}
           />
-          
         </div>
         {/* Botón de menú para móviles */}
         <button
@@ -49,20 +54,20 @@ const Navbar = () => {
         </button>
 
         {/* Menú de navegación */}
-        <div className={styles.content_opcions_nav}>
+        <div className={`${styles.content_opcions_nav}`}>
           <ul className="flex flex-col md:flex-row md:space-x-12 space-y-2 md:space-y-0 text-center">
             <li>
               <a
                 href="#ranking"
-                className="font-semibold hover:text-blue-700 text-blue-950"
+                className="font-semibold hover:text-blue-500 text-blue-950"
               >
                 Ranking
               </a>
             </li>
             <li>
-            <Link
+              <Link
                 to="/comments"
-                className="font-semibold hover:text-blue-700 text-blue-950"
+                className="font-semibold hover:text-blue-500 text-blue-950"
               >
                 Comentarios
               </Link>
@@ -70,19 +75,34 @@ const Navbar = () => {
             <li>
               <a
                 href="#empresas"
-                className="font-semibold hover:text-blue-700 text-blue-950"
+                className="font-semibold hover:text-blue-500 text-blue-950"
               >
                 Empresas
               </a>
             </li>
-            <li>
-              <button
-                className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent rounded"
-                onClick={() => handleMenuClick("/auth/login")}
-              >
-                Iniciar Sesión
-              </button>
-            </li>
+
+            {user ? (
+              <li className="relative">
+                {/* Nombre del usuario */}
+                <button
+                  className="flex items-center font-semibold text-blue-950 hover:text-blue-500 "
+                  onClick={() => setShowMenu(!showMenu)}
+                >
+                  Hola, {user.name}
+                  <FaChevronDown className="ml-2" size={14}/>
+                </button>
+                {showMenu ? <Submenu showMenu={showMenu} logout={logout} /> : " "} 
+              </li>
+            ) : (
+              <li>
+                <button
+                  className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent rounded"
+                  onClick={() => handleMenuClick("/auth/login")}
+                >
+                  Iniciar Sesión
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </nav>
