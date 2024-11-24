@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles/home.module.css";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate,Link } from "react-router-dom"; 
 import '@fontsource/inter'; 
 
 
@@ -43,6 +43,8 @@ const Home = () => {
         >
           <img src="/image/comentarios.jpeg" alt="Comentarios" />
           <p>Comentarios</p>
+          <Link
+                to="/comments" />
           <p>Un top de las empresas más mencionadas por nuestros seguidores</p>
         </div>
         <div
