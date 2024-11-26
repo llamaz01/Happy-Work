@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles/comments.module.css";
 import "@fontsource/inter";
+import { useNavigate } from "react-router-dom";
 
 const Comments = () => {
+  const navigate = useNavigate();
   const [empresas, setEmpresas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,7 +26,7 @@ const Comments = () => {
         setLoading(false);
       }
     };
-    
+
 
     fetchEmpresas();
   }, []);
@@ -63,7 +65,9 @@ const Comments = () => {
                 <strong>Calificación:</strong>{" "}
                 <span className={styles.ratingStars}>⭐</span> {parseFloat(empresa.averageRating).toFixed(1)}
               </p>
-              <button className={styles.commentsButton}>
+              <button className={styles.commentsButton}
+                onClick={() => navigate(`/commets/detailscompany/${empresa.id}`)}>
+
                 Ver los {empresa.totalComments} comentarios
               </button>
             </div>

@@ -58,7 +58,7 @@ const Navbar = () => {
           <ul className="flex flex-col md:flex-row md:space-x-12 space-y-2 md:space-y-0 text-center">
             <li>
               <a
-                href="#ranking"
+                href="/ranking"
                 className="font-semibold hover:text-blue-500 text-blue-950"
               >
                 Ranking
@@ -74,7 +74,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="#empresas"
+                href="/empresas"
                 className="font-semibold hover:text-blue-500 text-blue-950"
               >
                 Empresas

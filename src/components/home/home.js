@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./styles/home.module.css";
 import { useNavigate,Link } from "react-router-dom"; 
+
 import '@fontsource/inter'; 
+import { CarouselTransition } from "./carousel";
 
 
 const Home = () => {
@@ -14,11 +16,9 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <img
-          src="/image/oficina.jpg"
-          alt="Cabecera"
-          className={styles.headerImage}
-        />
+      
+      {/* Aquí insertamos el carrusel */}
+   
         <div className={styles.headerText}>
           <div className={styles.titleWrapper}>
             <h1>Happy Work :)</h1>
