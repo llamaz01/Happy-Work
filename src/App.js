@@ -4,6 +4,8 @@ import { history } from "./components/utils/history";
 
 import "./App.css";
 import "./index.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/navbar/navbar";
 import Home from "./components/home/home";
 import Login from "./components/auth/login/Login";
@@ -31,7 +33,9 @@ function App() {
           <Route path="/commets/detailscompany/:id" element={<DetailsComments />} />
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/" element={<Home />} />
+          
         </Routes>
+        <ToastContainer />
       </div>
     </Router>
   );

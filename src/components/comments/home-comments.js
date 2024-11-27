@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles/comments.module.css";
 import "@fontsource/inter";
 import { useNavigate } from "react-router-dom";
-
+import CommentModal from "./commentModal";
+import { toast } from "react-toastify";
 const Comments = () => {
   const navigate = useNavigate();
   const [empresas, setEmpresas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    // Llamada a la API para obtener los datos de las empresasw
     const fetchEmpresas = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/comments/companies/data");
@@ -27,9 +28,27 @@ const Comments = () => {
       }
     };
 
-
     fetchEmpresas();
   }, []);
+
+  const handleAddComment = async (newComment) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/comments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(newComment),
+      });
+
+      const responseData = await response.json();
+      if (!response.ok) throw new Error(responseData.message);
+      console.log("exito");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   if (loading) {
     return <p className={styles.loading}>Cargando...</p>;
@@ -49,7 +68,12 @@ const Comments = () => {
             placeholder="Buscar Empresa"
             className={styles.searchInput}
           />
-          <button className={styles.addCommentButton}>Agregar comentario</button>
+          <button
+            className={styles.addCommentButton}
+            onClick={() => setShowModal(true)}
+          >
+            Agregar comentario
+          </button>
         </div>
       </header>
 
@@ -63,17 +87,27 @@ const Comments = () => {
             <div className={styles.empresaActions}>
               <p>
                 <strong>Calificación:</strong>{" "}
-                <span className={styles.ratingStars}>⭐</span> {parseFloat(empresa.averageRating).toFixed(1)}
+                <span className={styles.ratingStars}>⭐</span>{" "}
+                {parseFloat(empresa.averageRating).toFixed(1)}
               </p>
-              <button className={styles.commentsButton}
-                onClick={() => navigate(`/commets/detailscompany/${empresa.id}`)}>
-
+              <button
+                className={styles.commentsButton}
+                onClick={() => navigate(`/commets/detailscompany/${empresa.id}`)}
+              >
                 Ver los {empresa.totalComments} comentarios
               </button>
             </div>
           </div>
         ))}
       </div>
+
+      {showModal && (
+        <CommentModal
+          empresas={empresas}
+          onClose={() => setShowModal(false)}
+          onSubmit={handleAddComment}
+        />
+      )}
     </div>
   );
 };
