@@ -12,7 +12,7 @@ const RankingTop = ({ data }) => {
     return (
         <div
             onClick={()=>handleClick(data.id)}
-            className={`text-white p-4 mt-4 rounded-md shadow-lg ${styles.bgRankingTop} transition-transform transform hover:scale-95 duration-300  hover:bg-gray-800 cursor-pointer`}
+            className={`text-white p-4 mt-4 rounded-md shadow-lg ${styles.bgRankingTop} transition-transform transform  hover:bg-gray-800 cursor-pointer`}
         >
             <div className="flex justify-between items-start space-x-8">
                 <div>

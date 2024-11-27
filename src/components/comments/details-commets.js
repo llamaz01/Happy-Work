@@ -4,6 +4,7 @@ import CommentsFromDetails from "./comments-from-details";
 import useDetailsComments from "../../hooks/useDetailsComments";
 import { useParams } from "react-router-dom";
 import RenderStars from "../common/stars/renderStars";
+import Loader from "../common/loader/loader";
 
 const DetailsComments = () => {
   const { id } = useParams();
@@ -60,7 +61,7 @@ const DetailsComments = () => {
             <p className="text-center text-red-500">Error al cargar los comentarios: {errorResponse}</p>
           )}
           {isLoading ? (
-            <p className="text-center text-gray-500">Cargando comentarios...</p>
+            <Loader />
           ) : comments?.comments?.length > 0 ? (
             comments.comments.map((comment) => (
               <CommentsFromDetails key={comment.id} data={comment} />
