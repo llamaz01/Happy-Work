@@ -1,13 +1,10 @@
 import React from "react";
 import styles from "./styles/home.module.css";
-import { useNavigate,Link } from "react-router-dom"; 
-
-import '@fontsource/inter'; 
-import { CarouselTransition } from "./carousel";
-
+import { useNavigate, Link } from "react-router-dom";
+import '@fontsource/inter';
 
 const Home = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleNavigate = (path) => {
     navigate(path);
@@ -16,26 +13,27 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-      
-      {/* Aquí insertamos el carrusel */}
-   
+        <div className={styles.card_360}>
+          <img src="/image/work1.png" alt="Imagen 1" />
+        </div>
         <div className={styles.headerText}>
           <div className={styles.titleWrapper}>
-            <h1>Happy Work :)</h1>
+            <h1>Happy Work</h1>
           </div>
-          <h2>Empodera tu voz <br /> Mejora tu trabajo</h2>
+          <h2>Empodera tu voz, <br /> <strong className={styles.txt_mejora}> mejora tu trabajo</strong></h2>
         </div>
       </header>
-      
+
+
       <div className={styles.cardsContainer}>
         <div
           className={styles.card}
           onClick={() => handleNavigate("/ranking")}
         >
-          <img src="/image/ranking.jpeg" alt="Ranking" />
+          <img src="/image/ranking.png" alt="Ranking" />
           <p>Ranking</p>
           <p>Un top de las empresas
-          mas mencionadas por nuestros seguidores</p>
+            mas mencionadas por nuestros seguidores</p>
         </div>
         <div
           className={styles.card}
@@ -44,7 +42,7 @@ const Home = () => {
           <img src="/image/comentarios.jpeg" alt="Comentarios" />
           <p>Comentarios</p>
           <Link
-                to="/comments" />
+            to="/comments" />
           <p>Un top de las empresas más mencionadas por nuestros seguidores</p>
         </div>
         <div
@@ -54,10 +52,10 @@ const Home = () => {
           <img src="/image/empresas.jpeg" alt="Empresa" />
           <p>Empresas</p>
           <p>Busca la empresa de tu agrado y descubre todos los comentarios
-             que se han dicho de esa empresa</p>
+            que se han dicho de esa empresa</p>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

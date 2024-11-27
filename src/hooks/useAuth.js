@@ -28,7 +28,6 @@ const useAuth = () => {
 
       if (error.response) {
         setErrorResponse(error.response.data);
-        console.error("Error con respuesta del servidor:", error.response.data);
       } else if (error.request) {
         console.error("No se recibió respuesta del servidor:");
       } else {
