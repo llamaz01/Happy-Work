@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from "react";
+import Typewriter from "typewriter-effect";
 import styles from "./styles/register.module.css";
-import InputField from "./InputField";
-import ImageWithAnimation from "./ImageWithAnimation";
 import useAuth from "../../../hooks/useAuth";
-import Loading from "../../common/loader/loading";
 import { useUser } from "../../../contexts/userProvider";
+import Loader from "../../common/loader/loader";
+import { useNavigate } from "react-router-dom";
+import Loading from "../../common/loader/loading";
+import ImageWithAnimation from "./ImageWithAnimation";
+import InputField from "./InputField";
 
 const defaultValues = {
   name: "",
+  industry: "",
+  address: "",
+  countEmployee: 0,
   email: "",
   password: "",
 };
 
-const Register = () => {
-  const { postRegisterUser, data, error, errorResponse, isLoading } = useAuth();
+const RegisterCompany = () => {
+  const { postRegisterCompany, data, error, errorResponse, isLoading } =
+    useAuth();
   const [formData, setFormData] = useState(defaultValues);
   const [validationError, setValidationError] = useState("");
   const { login: saveUser } = useUser();
@@ -36,7 +43,14 @@ const Register = () => {
   };
 
   const validateForm = () => {
-    if (!formData.name || !formData.email || !formData.password) {
+    if (
+      !formData.name ||
+      !formData.address ||
+      !formData.industry ||
+      formData.countEmployee == 0 ||
+      !formData.email ||
+      !formData.password
+    ) {
       return "Todos los campos son obligatorios.";
     }
     if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -45,17 +59,24 @@ const Register = () => {
     if (formData.password.length < 6) {
       return "La contraseña debe tener al menos 6 caracteres.";
     }
+
+    if (formData.countEmployee <= 0) {
+      return "La empresa no puede tener cero o menos empleados.";
+    }
     return null;
   };
 
   const onSubmit = async () => {
     const error = validateForm();
+    console.log("APRETANDO");
     if (error) {
+      console.log(error);
       setValidationError(error);
       return;
     }
+    console.log("APRETANDO xw222222222");
     setValidationError("");
-    await postRegisterUser(formData);
+    await postRegisterCompany(formData);
   };
 
   return (
@@ -78,19 +99,41 @@ const Register = () => {
             <h3 className="text-lg font-semibold mt-4 text-blue-950">
               Registrar
             </h3>
-            <h3 className="text-sm mt-3 text-blue-950">Cuenta Personal</h3>
+            <h3 className="text-sm mt-3 text-blue-950">Cuenta Empresarial</h3>
             <hr className="my-4 border-t-2 border-gray-100" />
 
             <div className="text-red-500 text-sm mt-2">
               {validationError && <p>{validationError}</p>}
               {errorResponse?.message && <p>{errorResponse.message}</p>}
             </div>
+
             {/* Usando el subcomponente InputField para los campos */}
             <InputField
-              label="Nombre"
+              label="Nombre de la Empresa"
               type="text"
               name="name"
               value={formData.name}
+              onChange={handleChange}
+            />
+            <InputField
+              label="Rubro"
+              type="text"
+              name="industry"
+              value={formData.industry}
+              onChange={handleChange}
+            />
+            <InputField
+              label="Dirección"
+              type="text"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+            />
+            <InputField
+              label="Cantidad de Empleados"
+              type="number"
+              name="countEmployee"
+              value={formData.countEmployee}
               onChange={handleChange}
             />
             <InputField
@@ -100,6 +143,7 @@ const Register = () => {
               value={formData.email}
               onChange={handleChange}
             />
+
             <InputField
               label="Contraseña"
               type="password"
@@ -138,4 +182,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterCompany;

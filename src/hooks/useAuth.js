@@ -44,9 +44,14 @@ const useAuth = () => {
     }
   };
 
-  const postRegister = async (params) => {
-    return handleRequest(() => api.post(`${AUTH_ENDPOINT}/register`, params));
+  const postRegisterUser = async (params) => {
+    return handleRequest(() => api.post(`${AUTH_ENDPOINT}/register/user`, params));
   };
+
+  const postRegisterCompany = async (params) => {
+    return handleRequest(() => api.post(`${AUTH_ENDPOINT}/register/company`, params));
+  };
+
 
   const postLogin = async (params) => {
     handleRequest(() => api.post(`${AUTH_ENDPOINT}/login`, params));
@@ -54,7 +59,8 @@ const useAuth = () => {
 
   return {
     postLogin,
-    postRegister,
+    postRegisterUser,
+    postRegisterCompany,
     error,
     errorResponse,
     isLoading,
