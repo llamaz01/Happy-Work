@@ -121,8 +121,7 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
             options={empresaOptions}
             value={selectedEmpresa}
             onChange={setSelectedEmpresa}
-            placeholder="Escribe para buscar..."
-            className={styles.input}
+            placeholder="Escribe para buscar..."         
           />
         </label>
 
