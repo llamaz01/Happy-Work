@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 
 const useDetailsComments = () => {
-  //const COMMENTS_ENDPOINT = "/comments/search";
   const AVERAGE_COMMENTS_ENDPOINT = "/comments/overall-average";
   const COMMENTS_COMPANY_ENDPOINT = "/comments/search";
   
@@ -25,19 +24,15 @@ const useDetailsComments = () => {
     try {
       const res = await requestFunction();
       setData(res.data);
-      console.log("DATA: ", res.data);
       return res.data;
     } catch (error) {
       setError(true);
 
       if (error.response) {
-        // Handle 404 error specifically
         if (error.response.status === 404) {
           setErrorResponse("No se encontraron comentarios para esta empresa.");
-          console.error("No se encontraron comentarios para esta empresa");
         } else {
           setErrorResponse(error.response.data);
-          console.error("Error con respuesta del servidor:", error.response.data);
         }
       } else if (error.request) {
         console.error("No se recibió respuesta del servidor:");
