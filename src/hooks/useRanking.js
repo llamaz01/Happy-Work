@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 
-const useAuth = () => {
-  const AUTH_ENDPOINT = "/auth";
+const useRanking = () => {
+  const RANKING_ENDPOINT = "/company/ranking";
+
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
   const [errorResponse, setErrorResponse] = useState([]);
@@ -27,14 +28,17 @@ const useAuth = () => {
       setError(true);
 
       if (error.response) {
-        setErrorResponse(error.response.data);
+        if (error.response.status === 404) {
+          setErrorResponse("No se encontraron empresas.");
+        } else {
+          setErrorResponse(error.response.data);
+        }
       } else if (error.request) {
         console.error("No se recibió respuesta del servidor:");
       } else {
         console.error("Error al configurar la solicitud:");
       }
 
-      setIsLoading(false);
       return {
         error: error.response?.data || error.message || "Error desconocido",
       };
@@ -43,23 +47,16 @@ const useAuth = () => {
     }
   };
 
-  const postRegisterUser = async (params) => {
-    return handleRequest(() => api.post(`${AUTH_ENDPOINT}/register/user`, params));
+  const fetchRanked = async (companyName = "") => {
+    return handleRequest(() => api.get(`${RANKING_ENDPOINT}?companyName=${companyName}`));
   };
 
-  const postRegisterCompany = async (params) => {
-    return handleRequest(() => api.post(`${AUTH_ENDPOINT}/register/company`, params));
-  };
+  const searchRanked = async () =>{
 
-
-  const postLogin = async (params) => {
-    handleRequest(() => api.post(`${AUTH_ENDPOINT}/login`, params));
-  };
+  }
 
   return {
-    postLogin,
-    postRegisterUser,
-    postRegisterCompany,
+    fetchRanked,
     error,
     errorResponse,
     isLoading,
@@ -67,4 +64,4 @@ const useAuth = () => {
   };
 };
 
-export default useAuth;
+export default useRanking;
