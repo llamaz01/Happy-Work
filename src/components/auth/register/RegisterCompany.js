@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Typewriter from "typewriter-effect";
 import styles from "./styles/register.module.css";
 import useAuth from "../../../hooks/useAuth";
 import { useUser } from "../../../contexts/userProvider";
-import Loader from "../../common/loader/loader";
-import { useNavigate } from "react-router-dom";
 import Loading from "../../common/loader/loading";
 import ImageWithAnimation from "./ImageWithAnimation";
 import InputField from "./InputField";
@@ -68,13 +65,11 @@ const RegisterCompany = () => {
 
   const onSubmit = async () => {
     const error = validateForm();
-    console.log("APRETANDO");
     if (error) {
       console.log(error);
       setValidationError(error);
       return;
     }
-    console.log("APRETANDO xw222222222");
     setValidationError("");
     await postRegisterCompany(formData);
   };
