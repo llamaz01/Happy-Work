@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import RankingTop from "./rankings-top";
 import { FaSearch } from "react-icons/fa";
 import useRanking from "../../hooks/useRanking";
+import Loader from "../common/loader/loader";
 
 const Ranking = () => {
     const { fetchRanked,
@@ -37,7 +38,7 @@ const Ranking = () => {
 
     return (
         <div className="pt-6 max-w-5xl mx-auto">
-            <div className="flex justify-between items-center flex-col lg:flex-row mt-4 lg:mt-0">
+            <div className="flex justify-between items-center  flex-col lg:flex-row mt-4 lg:mt-0">
                 <div className="text-blue-950 font-bold text-4xl p-4 rounded-md">
                     <h1>Ranking</h1>
                 </div>
@@ -53,8 +54,8 @@ const Ranking = () => {
                     </div>
                     <button
                         onClick={handleSearchSubmit}
-                        className="ml-2 p-2 bg-white text-blue-700 border-2 border-blue-800 rounded-md hover:border-blue-950 hover:bg-blue-950 hover:text-white transition-colors duration-300"
-                        >
+                        className="ml-2 p-2 bg-white text-blue-500 border-2 border-blue-500 rounded-md hover:border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300"
+                    >
                         Buscar
                     </button>
                 </div>
@@ -63,7 +64,7 @@ const Ranking = () => {
                 <p className="text-center text-red-500">Error al cargar el ranking: {errorResponse}</p>
             )}
             {isLoading ? (
-                <p className="text-center text-gray-500">Cargando Ranking...</p>
+                <Loader />
             ) : ranked?.length > 0 ? (
                 ranked.map((rank) => (
                     <RankingTop key={rank.id} data={rank} />

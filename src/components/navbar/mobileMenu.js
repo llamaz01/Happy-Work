@@ -15,13 +15,10 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
   return (
     <div>
       <div
-        className={`fixed top-0 left-0 w-full h-full z-50 bg-gray-800 bg-opacity-90 transform ${
-          isOpen ? "" : "-translate-x-full"
-        } transition-transform duration-500 overflow-y-hidden ${
-          styles.hiddenOnLarge
-        }`}
+        className={`fixed top-0 left-0 w-full h-full z-50 bg-gray-800 bg-opacity-90 transform ${isOpen ? "" : "-translate-x-full"
+          } transition-transform duration-500 overflow-y-hidden ${styles.hiddenOnLarge
+          }`}
       >
-        {/* Botón para cerrar el menú */}
         <button
           onClick={() => setIsOpen(false)}
           className="absolute top-4 right-4 text-white"
@@ -52,20 +49,13 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
           </button>
           <button
             className="flex items-center gap-x-2 py-2 border-b border-lineColorBorder transform transition-all duration-300 hover:scale-105 font-semibold hover:text-blue-700 text-white"
-            onClick={() => handleMenuClick("/comentarios")}
+            onClick={() => handleMenuClick("/comments")}
           >
             Comentarios
-          </button>
-          <button
-            className="flex items-center gap-x-2 py-2 border-b border-lineColorBorder transform transition-all duration-300 hover:scale-105 font-semibold hover:text-blue-700 text-white"
-            onClick={() => handleMenuClick("/empresas")}
-          >
-            Empresas
           </button>
 
           {user ? (
             <div className="mt-8">
-              {/* Nombre del usuario */}
               <p className="font-semibold text-blue-500">Hola, {user.name}</p>
               <button
                 className="mt-2 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded"

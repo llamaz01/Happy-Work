@@ -8,9 +8,9 @@ import { FaChevronDown } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showMenu, setShowMenu] = useState(false); 
+  const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
-  const { user, logout } = useUser(); 
+  const { user, logout } = useUser();
 
   const handleMenuClick = (route) => {
     navigate(route);
@@ -20,7 +20,6 @@ const Navbar = () => {
   return (
     <div className={`relative bg-slate-600 p-3 h-14 ${styles.content_nav}`}>
       <nav className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
         <div className={styles.clickable}>
           <img
             src="/image/logo2.png"
@@ -31,7 +30,6 @@ const Navbar = () => {
             onClick={() => handleMenuClick("/home")}
           />
         </div>
-        {/* Botón de menú para móviles */}
         <button
           className={`${styles.hamburger_menu} text-white md:hidden`}
           onClick={() => setIsOpen(!isOpen)}
@@ -72,26 +70,17 @@ const Navbar = () => {
                 Comentarios
               </Link>
             </li>
-            <li>
-              <a
-                href="/empresas"
-                className="font-semibold hover:text-blue-500 text-blue-950"
-              >
-                Empresas
-              </a>
-            </li>
 
             {user ? (
               <li className="relative">
-                {/* Nombre del usuario */}
                 <button
                   className="flex items-center font-semibold text-blue-950 hover:text-blue-500 "
                   onClick={() => setShowMenu(!showMenu)}
                 >
                   Hola, {user.name}
-                  <FaChevronDown className="ml-2" size={14}/>
+                  <FaChevronDown className="ml-2" size={14} />
                 </button>
-                {showMenu ? <Submenu showMenu={showMenu} logout={logout} /> : " "} 
+                {showMenu ? <Submenu showMenu={showMenu} logout={logout} /> : " "}
               </li>
             ) : (
               <li>

@@ -49,7 +49,6 @@ export const UserProvider = ({ children }) => {
   );
 };
 
-// Hook personalizado para usar el contexto
 export const useUser = () => {
   return useContext(UserContext);
 };

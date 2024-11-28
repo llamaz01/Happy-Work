@@ -3,6 +3,10 @@
   font-family: "Inter", sans-serif;
 }
 
+.bgDetailsComments {
+  background-color: #44546c;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -12,12 +16,12 @@
 
 .header h1 {
   font-size: 1.5rem;
+  font-weight: bold;
   margin: 0;
 }
 
 .searchContainer {
   display: flex;
-  gap: 10px;
 }
 
 .searchInput {
@@ -29,7 +33,7 @@
 
 .addCommentButton {
   padding: 8px 12px;
-  background-color: rgb(59, 80, 108);
+  background-color: #3b82f6;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -37,7 +41,7 @@
 }
 
 .addCommentButton:hover {
-  background-color: rgb(33, 63, 102);
+  background-color: #326ecf;
 }
 
 .empresasList {
@@ -120,5 +124,9 @@
 
   .empresaActions p {
     font-size: 0.9rem;
+  }
+
+  .content_btn_addComments {
+    justify-content: center;
   }
 }

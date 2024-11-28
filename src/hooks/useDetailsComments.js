@@ -4,7 +4,7 @@ import { useState } from "react";
 const useDetailsComments = () => {
   const AVERAGE_COMMENTS_ENDPOINT = "/comments/overall-average";
   const COMMENTS_COMPANY_ENDPOINT = "/comments/search";
-  
+
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
   const [errorResponse, setErrorResponse] = useState([]);

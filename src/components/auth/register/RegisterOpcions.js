@@ -32,21 +32,21 @@ const RegisterOpcion = () => {
 
             {/* Usando el subcomponente InputField para los campos */}
             <div className="mt-10 mb-5">
-            <button
-              className="w-full p-2 rounded-xl bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent"
-              onClick={() => handleMenuClick("/auth/register/user")}
-            >
-              Cuenta Personal
-            </button>
+              <button
+                className="w-full p-2 rounded-xl bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent"
+                onClick={() => handleMenuClick("/auth/register/user")}
+              >
+                Cuenta Personal
+              </button>
             </div>
 
             <div className="mt-10 mb-10">
-            <button
-              className="w-full p-2 rounded-xl bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent"
-              onClick={() => handleMenuClick("/auth/register/company")}
-            >
-              Cuenta Empresarial
-            </button>
+              <button
+                className="w-full p-2 rounded-xl bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent"
+                onClick={() => handleMenuClick("/auth/register/company")}
+              >
+                Cuenta Empresarial
+              </button>
             </div>
 
             <hr className="my-4 border-t-2 border-gray-100" />

@@ -4,16 +4,17 @@ import "@fontsource/inter";
 import { useNavigate } from "react-router-dom";
 import CommentModal from "./commentModal";
 import { FaSearch } from "react-icons/fa";
-import { toast } from "react-toastify";
+import RenderStars from "../common/stars/renderStars";
+import Loader from "../common/loader/loader";
 
 const Comments = () => {
   const navigate = useNavigate();
-  const [empresas, setEmpresas] = useState([]); // Lista completa de empresas
-  const [filteredEmpresas, setFilteredEmpresas] = useState([]); // Empresas filtradas
+  const [empresas, setEmpresas] = useState([]);
+  const [filteredEmpresas, setFilteredEmpresas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(""); // Término de búsqueda
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchEmpresas = async () => {
@@ -24,7 +25,7 @@ const Comments = () => {
         }
         const data = await response.json();
         setEmpresas(data);
-        setFilteredEmpresas(data); // Inicialmente, mostrar todas las empresas
+        setFilteredEmpresas(data);
       } catch (error) {
         console.error("Error al obtener datos de la API:", error);
         setError(error.message);
@@ -55,21 +56,19 @@ const Comments = () => {
     }
   };
 
-  // Manejar el cambio en el campo de búsqueda
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  // Buscar empresas al hacer clic en el botón
   const handleSearchSubmit = () => {
     const filtered = empresas.filter((empresa) =>
       empresa.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setFilteredEmpresas(filtered); // Actualizar la lista de empresas filtradas
+    setFilteredEmpresas(filtered);
   };
 
   if (loading) {
-    return <p className={styles.loading}>Cargando...</p>;
+    return <Loader />;
   }
 
   if (error) {
@@ -77,10 +76,12 @@ const Comments = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <h1>Comentarios y Calificaciones</h1>
-        <div className={styles.searchContainer}>
+    <div className={`pt-6 max-w-5xl mx-auto`}>
+      <header className={` flex justify-between items-center flex-col lg:flex-row mt-4 lg:mt-0 `}>
+        <div className="text-blue-950 font-bold text-center text-4xl p-4 rounded-md">
+          <h1>Comentarios y Calificaciones</h1>
+        </div>
+        <div className="flex">
           <div className="flex items-center border border-gray-300 rounded-md p-2">
             <FaSearch className="text-blue-950 mr-2" />
             <input
@@ -91,45 +92,57 @@ const Comments = () => {
             />
           </div>
           <button
-            onClick={handleSearchSubmit} 
-            className="ml-2 p-2 bg-white text-blue-700 border-2 border-blue-800 rounded-md hover:border-blue-950 hover:bg-blue-950 hover:text-white transition-colors duration-300"
+            onClick={handleSearchSubmit}
+            className="ml-2 p-2 bg-white text-blue-500 border-2 border-blue-500 rounded-md hover:border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300"
           >
             Buscar
           </button>
-          <button
-            className={styles.addCommentButton}
-            onClick={() => setShowModal(true)}
-          >
-            Agregar comentario
-          </button>
         </div>
       </header>
+      <div className={`flex justify-end mb-5 mt-3 ${styles.content_btn_addComments}`}>
+        <button
+          className={`${styles.addCommentButton} w-auto max-w-xs`}
+          onClick={() => setShowModal(true)}
+        >
+          Agregar comentario
+        </button>
+      </div>
 
-      <div className={styles.empresasList}>
+      <div className={`space-y-6`}>
         {filteredEmpresas.length > 0 ? (
           filteredEmpresas.map((empresa) => (
-            <div key={empresa.id} className={styles.empresaCard}>
-              <div className={styles.empresaInfo}>
-                <h2>{empresa.name}</h2>
-                <p>{empresa.description}</p>
+            <div
+              key={empresa.id}
+              className={`bg-white shadow-md p-6 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-lg transition-shadow duration-300  ${styles.bgDetailsComments}`}
+            >
+              <div className="flex-1">
+                <h2 className="text-2xl font-bold text-gray-200 break-words">{empresa.name}</h2>
+                <p className="text-gray-300 mt-2 break-words">{empresa.description}</p>
               </div>
-              <div className={styles.empresaActions}>
-                <p>
-                  <strong>Calificación:</strong>{" "}
-                  <span className={styles.ratingStars}>⭐</span>{" "}
-                  {parseFloat(empresa.averageRating).toFixed(1)}
+              <div className="mt-4 md:mt-0 md:ml-6 flex flex-col items-start md:items-end">
+                <p className="flex items-center space-x-4">
+                  <RenderStars rating={empresa.averageRating} />
+                  <span className="text-gray-400"><strong>{empresa.averageRating || "0.0"}</strong></span>
+
                 </p>
-                <button
-                  className={styles.commentsButton}
-                  onClick={() => navigate(`/commets/detailscompany/${empresa.id}`)}
-                >
-                  Ver los {empresa.totalComments} comentarios
-                </button>
+
+                {empresa.totalComments > 0 ? (
+                  <button
+                    className="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors duration-300"
+                    onClick={() => navigate(`/commets/detailscompany/${empresa.id}`)}
+                  >
+                    {empresa.totalComments === 1
+                      ? `Ver ${empresa.totalComments} comentario`
+                      : `Ver los ${empresa.totalComments} comentarios`}
+                  </button>
+                ) : (
+                  <p className="mt-2 text-gray-400">0 comentarios</p>
+                )}
               </div>
             </div>
           ))
         ) : (
-          <p className={styles.noResults}>No se encontraron empresas</p>
+          <p className="text-center text-gray-500 text-lg">Ups.. No se han podido encontrar la empresa</p>
         )}
       </div>
 
