@@ -49,7 +49,7 @@ const DetailsComments = () => {
           </div>
           <div className="flex items-center space-x-4">
             <RenderStars rating={comments.company?.overallAverage || 0} />
-            <span className="text-gray-400"><strong>{comments.company?.overallAverage || "N/A"}</strong></span>
+            <span className="text-gray-400"><strong>{comments.company?.overallAverage || "0.0"}</strong></span>
 
           </div>
         </div>

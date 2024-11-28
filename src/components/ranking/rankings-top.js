@@ -21,7 +21,7 @@ const RankingTop = ({ data }) => {
                 </div>
                 <div className="flex items-center space-x-4">
                     <RenderStars rating={data.averageRating || 0} />
-                    <span className="text-gray-400"><strong>{data.averageRating || "N/A"}</strong></span>
+                    <span className="text-gray-400"><strong>{data.averageRating || "0.0"}</strong></span>
                 </div>
             </div>
         </div>
