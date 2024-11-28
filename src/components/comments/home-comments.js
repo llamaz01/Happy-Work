@@ -6,6 +6,7 @@ import CommentModal from "./commentModal";
 import { FaSearch } from "react-icons/fa";
 import RenderStars from "../common/stars/renderStars";
 import Loader from "../common/loader/loader";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Comments = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Comments = () => {
   useEffect(() => {
     const fetchEmpresas = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/comments/companies/data");
+        const response = await fetch(`${API_URL}/comments/companies/data`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -39,7 +40,7 @@ const Comments = () => {
 
   const handleAddComment = async (newComment) => {
     try {
-      const response = await fetch("http://localhost:5000/api/comments", {
+      const response = await fetch(`${API_URL}/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
