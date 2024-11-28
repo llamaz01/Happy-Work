@@ -116,6 +116,7 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
         <div className={styles["modal-content-prin"]}>
           <h2>Agregar Comentario</h2>
         </div>
+        <hr className={styles.hr_comment}/>
         <label>
           <span>Seleccionar Empresa:</span>
           <Select
@@ -163,6 +164,7 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
 
           ))}
         </div>
+        <hr className={styles.hr_comment}/>
         {/* Comentario anonimo */}
         <label className={styles.checkbox}>
           <input
@@ -175,6 +177,7 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
           </div>
           <span>Enviar comentario de forma anónima</span>
         </label>
+        
         {/* Botones */}
         <div className={styles.actions}>
           <button onClick={onClose} className={styles["cancel-button"]}>
