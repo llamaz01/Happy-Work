@@ -20,7 +20,7 @@ const Comments = () => {
   useEffect(() => {
     const fetchEmpresas = async () => {
       try {
-        const response = await fetch(`${API_URL}/comments/companies/data`);
+        const response = await fetch(`${API_URL}/api/comments/companies/data`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -40,7 +40,7 @@ const Comments = () => {
 
   const handleAddComment = async (newComment) => {
     try {
-      const response = await fetch(`${API_URL}/comments`, {
+      const response = await fetch(`${API_URL}/api/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

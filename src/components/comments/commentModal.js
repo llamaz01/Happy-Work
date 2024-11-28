@@ -66,7 +66,7 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
     }
 
     try {
-      const response = await fetch(`${API_URL}/comments`, {
+      const response = await fetch(`${API_URL}/api/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
