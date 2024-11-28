@@ -1,34 +1,42 @@
-/* navbar.module.css */
-
 .content_opcions_nav {
   background: white;
   padding: 15px 35px 15px 50px;
   position: absolute;
-  top: 1%;
+  top: 10%;
   right: 0;
+  height: 60px;
   box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
   clip-path: polygon(5% 0, 100% 0, 100% 100%, 1% 100%);
   transition: all 0.3s ease-in-out;
-  z-index: 1;
 }
 
 .hamburger_menu {
-  display: none; 
+  display: none;
 }
 
 .clickable {
-  cursor: pointer; 
+  cursor: pointer;
   transition: transform 0.2s ease;
 }
 
 .clickable:active {
-  transform: scale(0.95); 
+  transform: scale(0.95);
 }
 
 .fadein {
   opacity: 0;
-  transform: scale(0.8); 
-  animation: fadeIn 1.5s ease forwards; 
+  transform: scale(0.8);
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.content_nav {
+  z-index: 1000;
+}
+
+.submenu {
+  z-index: 2000;
+  padding: 5px;
+  background-color: #475569;
 }
 
 @keyframes fadeIn {
@@ -38,15 +46,13 @@
   }
 }
 
-
-/* En pantallas pequeñas */
 @media (max-width: 768px) {
   .content_opcions_nav {
     display: none;
   }
 
   .hamburger_menu {
-    display: block; 
+    display: block;
   }
 }
 

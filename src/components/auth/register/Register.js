@@ -1,82 +1,119 @@
-import React from "react";
-import Typewriter from "typewriter-effect";
+import React, { useState, useEffect } from "react";
 import styles from "./styles/register.module.css";
+import InputField from "./InputField";
+import ImageWithAnimation from "./ImageWithAnimation";
+import useAuth from "../../../hooks/useAuth";
+import Loading from "../../common/loader/loading";
+import { useUser } from "../../../contexts/userProvider";
+
+const defaultValues = {
+  name: "",
+  email: "",
+  password: "",
+};
 
 const Register = () => {
+  const { postRegisterUser, data, error, errorResponse, isLoading } = useAuth();
+  const [formData, setFormData] = useState(defaultValues);
+  const [validationError, setValidationError] = useState("");
+  const { login: saveUser } = useUser();
+
+  useEffect(() => {
+    if (!data || error) return;
+    saveUser(data.token, {
+      name: data.name,
+      email: data.email,
+      _id: data._id,
+    });
+  }, [data, error]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const validateForm = () => {
+    if (!formData.name || !formData.email || !formData.password) {
+      return "Todos los campos son obligatorios.";
+    }
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      return "Correo electrónico no válido.";
+    }
+    if (formData.password.length < 6) {
+      return "La contraseña debe tener al menos 6 caracteres.";
+    }
+    return null;
+  };
+
+  const onSubmit = async () => {
+    const error = validateForm();
+    if (error) {
+      setValidationError(error);
+      return;
+    }
+    setValidationError("");
+    await postRegisterUser(formData);
+  };
+
   return (
-    <div className="relative w-screen h-screen flex justify-center items-center text-white pt-16 z-0">
-      <div className="grid grid-cols-1 md:grid-cols-2 ">
-        {/* Imagen contenedor */}
-        <div
-          className={`relative bg-blue-500 p-4 text-white ${styles.content_image_login}`}
-          style={{
-            backgroundImage: "url('/image/empoderatuvoz.gif')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            objectFit: "contain",
-            height: "80vh",
-          }}
-        >
-          {/* Animación de escritura */}
-          <div className="absolute inset-0 flex justify-center items-center">
-            <h1 className="text-3xl md:text-3xl text-white ">
-              <Typewriter
-                options={{
-                  strings: [
-                    "Empodera tu voz,<br/> <strong>mejora tu trabajo</strong>",
-                  ],
-                  autoStart: true,
-                  loop: true,
-                  delay: 75,
-                  deleteSpeed: 50,
-                  pauseFor: 7000,
-                }}
-              />
-            </h1>
-          </div>
-        </div>
+    <div
+      className={`relative w-screen flex justify-center items-center text-white pt-16 z-0`}
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        {/* Imagen contenedor con animación */}
+        <ImageWithAnimation
+          imageUrl="/image/empoderatuvoz.gif"
+          text="Empodera tu voz,<br/> <strong>mejora tu trabajo</strong>"
+        />
 
         {/* Contenedor de Register */}
         <div
           className={`bg-white p-4 text-black flex justify-center items-center top-10 ${styles.content_login}`}
         >
-          <div className="w-full max-w-md border-2 border-gray-100 rounded-lg p-4 ">
-            <h3 className="text-3xl font-bold mb-8 mt-4 text-blue-950 text-center">
-              Happy Work
-            </h3>
-
+          <div className="w-full max-w-md border-2 border-gray-100 rounded-lg p-4">
+            <img src="/image/logo.png" alt="logo" />
             <h3 className="text-lg font-semibold mt-4 text-blue-950">
-              Registrarme
+              Registrar
             </h3>
+            <h3 className="text-sm mt-3 text-blue-950">Cuenta Personal</h3>
             <hr className="my-4 border-t-2 border-gray-100" />
-            <label htmlFor="email" className="text-gray-500 text-xs">
-              Nombre
-            </label>
-            <input
+
+            <div className="text-red-500 text-sm mt-2">
+              {validationError && <p>{validationError}</p>}
+              {errorResponse?.message && <p>{errorResponse.message}</p>}
+            </div>
+            {/* Usando el subcomponente InputField para los campos */}
+            <InputField
+              label="Nombre"
               type="text"
-              placeholder=" "
-              className="w-full p-2 mb-4  border border-gray-200 rounded focus:border-gray-300 focus:outline-none"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
             />
-            <label htmlFor="email" className="text-gray-500 text-xs">
-              Correo Electrónico
-            </label>
-            <input
-              type="text"
-              placeholder=" "
-              className="w-full p-2 mb-4  border border-gray-200 rounded focus:border-gray-300 focus:outline-none"
+            <InputField
+              label="Correo Electrónico"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
             />
-            <label htmlFor="password" className="text-gray-500 text-xs">
-              Contraseña
-            </label>
-            <input
+            <InputField
+              label="Contraseña"
               type="password"
-              placeholder=" "
-              className="w-full p-2 mb-4 border border-gray-200 rounded focus:border-gray-300 focus:outline-none"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
             />
 
-            <button className="w-full p-2 rounded-xl bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent">
-              Registrar
+            <button
+              className="w-full p-2 rounded-xl bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent"
+              onClick={onSubmit}
+              disabled={isLoading}
+            >
+              {isLoading ? <Loading /> : "Registrar"}
             </button>
             <hr className="my-4 border-t-2 border-gray-100" />
 
