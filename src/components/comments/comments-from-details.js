@@ -3,7 +3,11 @@ import RenderStars from "../common/stars/renderStars";
 
 const CommentsFromDetails = ({ data }) => {
   const {
-    user,
+    user: {
+      email,
+      id,
+      name,
+    },
     date,
     comment,
     rating: {
@@ -23,8 +27,8 @@ const CommentsFromDetails = ({ data }) => {
           <img src="/image/lupaLogo.png" width={35} alt="Logo" />
         </div>
         <div>
-          <h1 className="text-lg font-semibold text-gray-900">
-            {data.isAnonymous ? "Anónimo" : user}
+          <h1 className="text-lg font-semibold text-gray-900 break-words">
+            {data.isAnonymous ? "Anónimo" : name}
           </h1>
           <p className="text-sm text-gray-500">
             {new Date(date).toLocaleDateString()}
@@ -33,7 +37,7 @@ const CommentsFromDetails = ({ data }) => {
       </div>
 
       <h3 className="text-gray-900 font-medium text-base mb-2">Comentario:</h3>
-      <p className="text-gray-700 text-sm mb-6">{comment}</p>
+      <p className="text-gray-700 text-sm mb-6 break-words">{comment}</p>
 
       <div className="space-y-3">
         <div className="flex items-center justify-between border-b pb-2">

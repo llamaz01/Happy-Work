@@ -54,7 +54,7 @@ const Ranking = () => {
                     </div>
                     <button
                         onClick={handleSearchSubmit}
-                        className="ml-2 p-2 bg-white text-blue-700 border-2 border-blue-800 rounded-md hover:border-blue-950 hover:bg-blue-950 hover:text-white transition-colors duration-300"
+                        className="ml-2 p-2 bg-white text-blue-500 border-2 border-blue-500 rounded-md hover:border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300"
                     >
                         Buscar
                     </button>

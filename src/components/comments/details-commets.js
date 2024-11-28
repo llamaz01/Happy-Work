@@ -7,6 +7,7 @@ import RenderStars from "../common/stars/renderStars";
 import Loader from "../common/loader/loader";
 
 const DetailsComments = () => {
+  
   const { id } = useParams();
   const [comments, setComments] = useState({
     company: {
@@ -24,6 +25,9 @@ const DetailsComments = () => {
     try {
       const response = await fetchCommentsCompany(id);
       setComments(response);
+
+      console.log(response);
+
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
@@ -44,8 +48,8 @@ const DetailsComments = () => {
       <div className={`text-white p-4 rounded-md max-w-4xl mx-auto ${styles.bgDetailsComments}`}>
         <div className="flex justify-between items-start space-x-8">
           <div>
-            <h1 className="text-2xl font-bold">{comments.company?.name || "Cargando empresa..."}</h1>
-            <h4 className="text-gray-400">{comments.company?.description || "Sin descripción disponible."}</h4>
+            <h1 className="text-2xl font-bold break-words">{comments.company?.name || "Cargando empresa..."}</h1>
+            <h4 className="text-gray-400 break-words">{comments.company?.description || "Sin descripción disponible."}</h4>
           </div>
           <div className="flex items-center space-x-4">
             <RenderStars rating={comments.company?.overallAverage || 0} />
@@ -67,7 +71,7 @@ const DetailsComments = () => {
               <CommentsFromDetails key={comment.id} data={comment} />
             ))
           ) : (
-            <p className="text-center text-gray-500">No hay comentarios disponibles.</p>
+            <p className="text-center text-gray-500">Ups... No hay comentarios disponibles.</p>
           )}
 
 

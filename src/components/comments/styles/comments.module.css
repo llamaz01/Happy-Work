@@ -33,7 +33,7 @@
 
 .addCommentButton {
   padding: 8px 12px;
-  background-color: rgb(83, 113, 153);
+  background-color: #3b82f6;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -41,7 +41,7 @@
 }
 
 .addCommentButton:hover {
-  background-color: rgb(21, 47, 82);
+  background-color: #326ecf;
 }
 
 .empresasList {

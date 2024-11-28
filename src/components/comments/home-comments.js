@@ -95,7 +95,7 @@ const Comments = () => {
           </div>
           <button
             onClick={handleSearchSubmit}
-            className="ml-2 p-2 bg-white text-blue-700 border-2 border-blue-800 rounded-md hover:border-blue-950 hover:bg-blue-950 hover:text-white transition-colors duration-300"
+            className="ml-2 p-2 bg-white text-blue-500 border-2 border-blue-500 rounded-md hover:border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300"
           >
             Buscar
           </button>
@@ -117,8 +117,8 @@ const Comments = () => {
               className={`bg-white shadow-md rounded-lg p-6 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-lg transition-shadow duration-300  ${styles.bgDetailsComments}`}
             >
               <div className="flex-1">
-                <h2 className="text-2xl font-bold text-gray-200">{empresa.name}</h2>
-                <p className="text-gray-300 mt-2">{empresa.description}</p>
+                <h2 className="text-2xl font-bold text-gray-200 break-words">{empresa.name}</h2>
+                <p className="text-gray-300 mt-2 break-words">{empresa.description}</p>
               </div>
               <div className="mt-4 md:mt-0 md:ml-6 flex flex-col items-start md:items-end">
                 <p className="flex items-center space-x-4">

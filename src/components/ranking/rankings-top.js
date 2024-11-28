@@ -16,8 +16,8 @@ const RankingTop = ({ data }) => {
         >
             <div className="flex justify-between items-start space-x-8">
                 <div>
-                    <h1 className="text-gray-200 text-2xl font-bold mb-6">{data.name || "Cargando empresa..."}</h1>
-                    <h4 className="text-gray-300 mb-2">{data.description || "Sin descripción disponible."}</h4>
+                    <h1 className="text-gray-200 text-2xl font-bold mb-6 break-words">{data.name || "Cargando empresa..."}</h1>
+                    <h4 className="text-gray-300 mb-2 break-words">{data.description || "Sin descripción disponible."}</h4>
                 </div>
                 <div className="flex items-center space-x-4">
                     <RenderStars rating={data.averageRating || 0} />
