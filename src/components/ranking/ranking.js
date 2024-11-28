@@ -47,7 +47,7 @@ const Ranking = () => {
                         <FaSearch className="text-blue-950 mr-2" />
                         <input
                             type="text"
-                            placeholder="Busca la Empresa"
+                            placeholder="Buscar Empresa"
                             value={searchTerm}
                             onChange={handleSearch}
                             className="flex-1 focus:outline-none" />
