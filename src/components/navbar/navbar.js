@@ -20,7 +20,6 @@ const Navbar = () => {
   return (
     <div className={`relative bg-slate-600 p-3 h-14 ${styles.content_nav}`}>
       <nav className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
         <div className={styles.clickable}>
           <img
             src="/image/logo2.png"
@@ -31,7 +30,6 @@ const Navbar = () => {
             onClick={() => handleMenuClick("/home")}
           />
         </div>
-        {/* Botón de menú para móviles */}
         <button
           className={`${styles.hamburger_menu} text-white md:hidden`}
           onClick={() => setIsOpen(!isOpen)}
@@ -75,7 +73,6 @@ const Navbar = () => {
 
             {user ? (
               <li className="relative">
-                {/* Nombre del usuario */}
                 <button
                   className="flex items-center font-semibold text-blue-950 hover:text-blue-500 "
                   onClick={() => setShowMenu(!showMenu)}

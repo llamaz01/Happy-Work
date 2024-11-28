@@ -1,7 +1,6 @@
 .container {
   display: flex;
   flex-direction: column;
- 
 }
 
 .header {
@@ -12,20 +11,19 @@
 }
 
 .card_360 img {
-  width: 100%; /* Asegura que la imagen ocupe todo el ancho */
-  height: auto; /* Asegura que la imagen ocupe toda la altura */
-  object-fit: cover; /* Hace que la imagen cubra todo el área sin perder su aspecto */
-  position: absolute; /* Coloca la imagen detrás del texto */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  position: absolute;
   top: 0;
   left: 0;
-  z-index: -1; /* Coloca la imagen debajo del texto */
+  z-index: -1;
 }
 
 .headerText {
   text-align: left;
   margin: 100px;
 }
-
 
 .headerText h1 {
   font-size: 1.5rem;
@@ -38,7 +36,7 @@
   font-size: 2.5rem;
   margin-top: 10px;
   color: white;
-   margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .cardsContainer {
@@ -52,9 +50,9 @@
 
 .card {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: white;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -67,8 +65,8 @@
 }
 
 .card img {
-  display: block; 
-  margin: 0 auto; 
+  display: block;
+  margin: 0 auto;
   width: 80%;
   border-radius: 50%;
   object-fit: cover;
@@ -78,14 +76,12 @@
   transform: scale(1.05);
 }
 
-
 .card p:last-child {
   font-size: 0.9em;
   color: #666;
   margin-top: 25px;
   margin-bottom: 10px;
 }
-
 
 .card_360 {
   border-radius: 8px;
@@ -94,11 +90,9 @@
   height: auto;
 }
 
-.card_360 img{
+.card_360 img {
   width: 100%;
 }
-
-
 
 @media (max-width: 768px) {
   .headerText h1 {
@@ -106,7 +100,7 @@
   }
 
   .headerText h2 {
-    font-size: 2.0rem;
+    font-size: 2rem;
   }
 
   .card {
@@ -117,7 +111,7 @@
     background: linear-gradient(180deg, #44546c, #fcfcfccc);
   }
 
-  .card_360{
+  .card_360 {
     display: none;
   }
 }

@@ -7,7 +7,7 @@ import RenderStars from "../common/stars/renderStars";
 import Loader from "../common/loader/loader";
 
 const DetailsComments = () => {
-  
+
   const { id } = useParams();
   const [comments, setComments] = useState({
     company: {

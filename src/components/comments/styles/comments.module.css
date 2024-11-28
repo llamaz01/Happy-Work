@@ -3,7 +3,7 @@
   font-family: "Inter", sans-serif;
 }
 
-.bgDetailsComments{
+.bgDetailsComments {
   background-color: #44546c;
 }
 
@@ -126,7 +126,7 @@
     font-size: 0.9rem;
   }
 
-  .content_btn_addComments{
+  .content_btn_addComments {
     justify-content: center;
   }
 }

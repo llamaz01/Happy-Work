@@ -19,7 +19,6 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
           } transition-transform duration-500 overflow-y-hidden ${styles.hiddenOnLarge
           }`}
       >
-        {/* Botón para cerrar el menú */}
         <button
           onClick={() => setIsOpen(false)}
           className="absolute top-4 right-4 text-white"
@@ -57,7 +56,6 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
 
           {user ? (
             <div className="mt-8">
-              {/* Nombre del usuario */}
               <p className="font-semibold text-blue-500">Hola, {user.name}</p>
               <button
                 className="mt-2 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded"

@@ -56,12 +56,10 @@ const Comments = () => {
     }
   };
 
-  // Manejar el cambio en el campo de búsqueda
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  // Buscar empresas al hacer clic en el botón
   const handleSearchSubmit = () => {
     const filtered = empresas.filter((empresa) =>
       empresa.name.toLowerCase().includes(searchTerm.toLowerCase())

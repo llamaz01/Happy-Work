@@ -51,9 +51,6 @@ const useRanking = () => {
     return handleRequest(() => api.get(`${RANKING_ENDPOINT}?companyName=${companyName}`));
   };
 
-  const searchRanked = async () =>{
-
-  }
 
   return {
     fetchRanked,

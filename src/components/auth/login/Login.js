@@ -28,7 +28,7 @@ const Login = () => {
       });
     }
   }, [data, error]);
-  
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -90,7 +90,7 @@ const Login = () => {
                 </div>
               )}
             </div>
-            
+
             <label htmlFor="email" className="text-gray-500 text-xs">
               Correo Electrónico
             </label>

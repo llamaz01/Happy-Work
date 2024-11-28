@@ -20,12 +20,10 @@ function App() {
   return (
     <Router history={history}>
       <div>
-        <Navbar /> {/* Navbar debe estar fuera de Routes */}
+        <Navbar />
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/auth/login" element={<Login />} />
-          <Route path="/about" element={<h1>Acerca de</h1>} />
-          <Route path="/contact" element={<h1>Contacto</h1>} />
           <Route path="/auth/register" element={<RegisterOpcion />} />
           <Route path="/auth/register/user" element={<Register />} />
           <Route path="/auth/register/company" element={<RegisterCompany />} />
@@ -33,7 +31,6 @@ function App() {
           <Route path="/commets/detailscompany/:id" element={<DetailsComments />} />
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/" element={<Home />} />
-          
         </Routes>
         <ToastContainer />
       </div>
