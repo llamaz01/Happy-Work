@@ -80,10 +80,10 @@ const Comments = () => {
   return (
     <div className={`pt-6 max-w-5xl mx-auto`}>
       <header className={` flex justify-between items-center flex-col lg:flex-row mt-4 lg:mt-0 `}>
-        <div className="text-blue-950 font-bold text-4xl p-4 rounded-md">
+        <div className="text-blue-950 font-bold text-center text-4xl p-4 rounded-md">
           <h1>Comentarios y Calificaciones</h1>
         </div>
-        <div className={styles.searchContainer}>
+        <div className="flex">
           <div className="flex items-center border border-gray-300 rounded-md p-2">
             <FaSearch className="text-blue-950 mr-2" />
             <input
@@ -101,14 +101,15 @@ const Comments = () => {
           </button>
         </div>
       </header>
-      <div className="flex justify-end mb-5">
+      <div className={`flex justify-end mb-5 mt-3 ${styles.content_btn_addComments}`}>
         <button
-          className={styles.addCommentButton}
+          className={`${styles.addCommentButton} w-auto max-w-xs`}
           onClick={() => setShowModal(true)}
         >
           Agregar comentario
         </button>
       </div>
+
       <div className={`space-y-6`}>
         {filteredEmpresas.length > 0 ? (
           filteredEmpresas.map((empresa) => (

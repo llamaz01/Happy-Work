@@ -125,4 +125,8 @@
   .empresaActions p {
     font-size: 0.9rem;
   }
+
+  .content_btn_addComments{
+    justify-content: center;
+  }
 }
