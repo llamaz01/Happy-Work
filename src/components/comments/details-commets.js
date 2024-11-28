@@ -45,7 +45,7 @@ const DetailsComments = () => {
 
   return (
     <div className="pt-6">
-      <div className={`text-white p-4 rounded-md max-w-4xl mx-auto ${styles.bgDetailsComments}`}>
+      <div className={`text-white p-4 max-w-4xl mx-auto ${styles.bgDetailsComments}`}>
         <div className="flex justify-between items-start space-x-8">
           <div>
             <h1 className="text-2xl font-bold break-words">{comments.company?.name || "Cargando empresa..."}</h1>
