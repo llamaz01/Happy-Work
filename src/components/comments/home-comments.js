@@ -114,7 +114,7 @@ const Comments = () => {
           filteredEmpresas.map((empresa) => (
             <div
               key={empresa.id}
-              className={`bg-white shadow-md rounded-lg p-6 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-lg transition-shadow duration-300  ${styles.bgDetailsComments}`}
+              className={`bg-white shadow-md p-6 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-lg transition-shadow duration-300  ${styles.bgDetailsComments}`}
             >
               <div className="flex-1">
                 <h2 className="text-2xl font-bold text-gray-200 break-words">{empresa.name}</h2>

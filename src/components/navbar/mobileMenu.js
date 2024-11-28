@@ -15,11 +15,9 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
   return (
     <div>
       <div
-        className={`fixed top-0 left-0 w-full h-full z-50 bg-gray-800 bg-opacity-90 transform ${
-          isOpen ? "" : "-translate-x-full"
-        } transition-transform duration-500 overflow-y-hidden ${
-          styles.hiddenOnLarge
-        }`}
+        className={`fixed top-0 left-0 w-full h-full z-50 bg-gray-800 bg-opacity-90 transform ${isOpen ? "" : "-translate-x-full"
+          } transition-transform duration-500 overflow-y-hidden ${styles.hiddenOnLarge
+          }`}
       >
         {/* Botón para cerrar el menú */}
         <button
@@ -52,15 +50,9 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
           </button>
           <button
             className="flex items-center gap-x-2 py-2 border-b border-lineColorBorder transform transition-all duration-300 hover:scale-105 font-semibold hover:text-blue-700 text-white"
-            onClick={() => handleMenuClick("/comentarios")}
+            onClick={() => handleMenuClick("/comments")}
           >
             Comentarios
-          </button>
-          <button
-            className="flex items-center gap-x-2 py-2 border-b border-lineColorBorder transform transition-all duration-300 hover:scale-105 font-semibold hover:text-blue-700 text-white"
-            onClick={() => handleMenuClick("/empresas")}
-          >
-            Empresas
           </button>
 
           {user ? (

@@ -30,7 +30,7 @@ const Home = () => {
           className={styles.card}
           onClick={() => handleNavigate("/ranking")}
         >
-          <img src="/image/ranking.png" alt="Ranking" />
+          <img src="/image/empresas.jpeg" alt="Ranking" />
           <p>Ranking</p>
           <p>Un top de las empresas
             mas mencionadas por nuestros seguidores</p>
@@ -44,15 +44,6 @@ const Home = () => {
           <Link
             to="/comments" />
           <p>Un top de las empresas más mencionadas por nuestros seguidores</p>
-        </div>
-        <div
-          className={styles.card}
-          onClick={() => handleNavigate("/empresa")}
-        >
-          <img src="/image/empresas.jpeg" alt="Empresa" />
-          <p>Empresas</p>
-          <p>Busca la empresa de tu agrado y descubre todos los comentarios
-            que se han dicho de esa empresa</p>
         </div>
       </div>
     </div >

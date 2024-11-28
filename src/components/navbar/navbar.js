@@ -8,9 +8,9 @@ import { FaChevronDown } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showMenu, setShowMenu] = useState(false); 
+  const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
-  const { user, logout } = useUser(); 
+  const { user, logout } = useUser();
 
   const handleMenuClick = (route) => {
     navigate(route);
@@ -72,14 +72,6 @@ const Navbar = () => {
                 Comentarios
               </Link>
             </li>
-            <li>
-              <a
-                href="/empresas"
-                className="font-semibold hover:text-blue-500 text-blue-950"
-              >
-                Empresas
-              </a>
-            </li>
 
             {user ? (
               <li className="relative">
@@ -89,9 +81,9 @@ const Navbar = () => {
                   onClick={() => setShowMenu(!showMenu)}
                 >
                   Hola, {user.name}
-                  <FaChevronDown className="ml-2" size={14}/>
+                  <FaChevronDown className="ml-2" size={14} />
                 </button>
-                {showMenu ? <Submenu showMenu={showMenu} logout={logout} /> : " "} 
+                {showMenu ? <Submenu showMenu={showMenu} logout={logout} /> : " "}
               </li>
             ) : (
               <li>
