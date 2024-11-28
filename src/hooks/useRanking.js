@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 const useRanking = () => {
-  const RANKING_ENDPOINT = "/company/ranking";
+  const RANKING_ENDPOINT = "/api/company/ranking";
 
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);

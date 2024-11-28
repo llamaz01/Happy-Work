@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 const useAuth = () => {
-  const AUTH_ENDPOINT = "/auth";
+  const AUTH_ENDPOINT = "/api/auth";
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
   const [errorResponse, setErrorResponse] = useState([]);
