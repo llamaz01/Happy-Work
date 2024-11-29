@@ -54,6 +54,7 @@ const Login = () => {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             objectFit: "contain",
+            height:"100vh",
           }}
         >
           <div className="absolute inset-0 flex justify-center items-center">
