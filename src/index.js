@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <UserProvider>
-      <App /> {/* App ya incluye el Router */}
+      <App /> 
     </UserProvider>
   </React.StrictMode>
 );
