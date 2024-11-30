@@ -43,7 +43,7 @@ const Home = () => {
           <p>Comentarios</p>
           <Link
             to="/comments" />
-          <p>Un top de las empresas más mencionadas por nuestros seguidores</p>
+          <p>Publica tu experiencia laboral y danos un panorama del modo en el que se trabaja en la empresa</p>
         </div>
       </div>
     </div >
