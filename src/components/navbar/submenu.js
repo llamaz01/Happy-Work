@@ -1,14 +1,20 @@
 import React from "react";
+import { FaSignOutAlt } from 'react-icons/fa';
 
 const Submenu = ({ showMenu, logout }) => {
   return (
-    <ul>
+    <ul
+      className={`absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded shadow-lg ${
+        showMenu ? "block" : "hidden"
+      }`}
+    >
       <li
-        className="text-sm text-blue-950 hover:bg-gray-200 hover:text-blue-500 cursor-pointer"
+        className="flex items-center text-sm text-blue-950 hover:bg-gray-200 hover:text-blue-500 cursor-pointer p-2"
         onClick={logout}
       >
-        Cerrar Sesión
+       <FaSignOutAlt className="mr-2" /> Cerrar Sesión
       </li>
+     
     </ul>
   );
 };
