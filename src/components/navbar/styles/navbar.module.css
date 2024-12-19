@@ -1,13 +1,5 @@
 .content_opcions_nav {
-  background: white;
-  padding: 15px 35px 15px 50px;
-  position: absolute;
-  top: 10%;
-  right: 0;
-  height: 60px;
-  box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
-  clip-path: polygon(5% 0, 100% 0, 100% 100%, 1% 100%);
-  transition: all 0.3s ease-in-out;
+  display: block;
 }
 
 .hamburger_menu {
@@ -30,8 +22,37 @@
 }
 
 .content_nav {
+  background-color: var(--principal-color);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
+
+.text_hover_opcnav {
+  position: relative; 
+  color: white;
+  text-decoration: none;
+}
+
+.text_hover_opcnav:hover {
+  color: var(--secundario-color); 
+  transition: all 0.3s ease;
+}
+
+.text_hover_opcnav::after {
+  content: ""; 
+  position: absolute;
+  left: 0;
+  bottom: -80%;
+  width: 0;
+  height: 4px;
+  background-color: var(--secundario-color);
+  transition: width 0.3s ease;
+}
+
+.text_hover_opcnav:hover::after {
+  width: 100%;
+}
+
 
 .submenu {
   z-index: 2000;

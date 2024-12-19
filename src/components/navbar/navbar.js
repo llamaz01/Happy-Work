@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`relative bg-slate-600 p-3 h-14 ${styles.content_nav}`}>
+    <div className={`relative p-4 ${styles.content_nav}`}>
       <nav className="container mx-auto flex justify-between items-center">
         <div className={styles.clickable}>
           <img
@@ -52,12 +52,12 @@ const Navbar = () => {
         </button>
 
         {/* Menú de navegación */}
-        <div className={`${styles.content_opcions_nav}`}>
+        <div className={styles.content_opcions_nav}>
           <ul className="flex flex-col md:flex-row md:space-x-12 space-y-2 md:space-y-0 text-center">
             <li>
               <a
                 href="/ranking"
-                className="font-semibold hover:text-blue-500 text-blue-950"
+                className={`font-semibold text-lg  text-white ${styles.text_hover_opcnav}`}
               >
                 Ranking
               </a>
@@ -65,34 +65,36 @@ const Navbar = () => {
             <li>
               <Link
                 to="/comments"
-                className="font-semibold hover:text-blue-500 text-blue-950"
+                className={`font-semibold text-lg  text-white ${styles.text_hover_opcnav}`}
               >
                 Comentarios
               </Link>
             </li>
-
-            {user ? (
-              <li className="relative">
-                <button
-                  className="flex items-center font-semibold text-blue-950 hover:text-blue-500 "
-                  onClick={() => setShowMenu(!showMenu)}
-                >
-                  Hola, {user.name}
-                  <FaChevronDown className="ml-2" size={14} />
-                </button>
-                {showMenu ? <Submenu showMenu={showMenu} logout={logout} /> : " "}
-              </li>
-            ) : (
-              <li>
-                <button
-                  className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent rounded"
-                  onClick={() => handleMenuClick("/auth/login")}
-                >
-                  Iniciar Sesión
-                </button>
-              </li>
-            )}
           </ul>
+        </div>
+
+        <div className={styles.content_opcions_nav}>
+          {user ? (
+            <div className="relative">
+              <button
+                className={`flex items-center font-semibold text-white ${styles.text_hover_opcnav} `}
+                onClick={() => setShowMenu(!showMenu)}
+              >
+                Hola, {user.name}
+                <FaChevronDown className="ml-2" size={14} />
+              </button>
+              {showMenu ? <Submenu showMenu={showMenu} logout={logout} /> : ""}
+            </div>
+          ) : (
+            <div>
+              <button
+                className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-1 px-8 border border-white hover:border-transparent rounded"
+                onClick={() => handleMenuClick("/auth/login")}
+              >
+                Iniciar Sesión
+              </button>
+            </div>
+          )}
         </div>
       </nav>
       <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} />
