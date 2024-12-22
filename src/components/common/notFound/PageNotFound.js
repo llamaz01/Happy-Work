@@ -12,20 +12,20 @@ const PageNotFound = () => {
           width={500}
         />
       </div>
-      <div>
+      <div className="text-purple-600 font-bold">
         Opss.. Al parecer no existe la página
       </div>
       <Link
         to="/"
+        className="border-purple-600 text-purple-700 hover:text-white hover:bg-purple-700 transition duration-300 ease-in-out"
         style={{
           textDecoration: "none",
-          color: "#fff",
-          backgroundColor: "#007bff",
           padding: "10px 20px",
           borderRadius: "5px",
           fontSize: "20px",
           marginTop: "20px",
           display: "inline-block",
+          border: "1px solid"
         }}
       >
         Volver al inicio
