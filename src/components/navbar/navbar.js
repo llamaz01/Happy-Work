@@ -24,7 +24,7 @@ const Navbar = () => {
           <img
             src="/image/logo2.png"
             alt="logo"
-            height={200}
+            height={250}
             width={150}
             className={`text-2xl font-bold text-white ${styles.fadein}`}
             onClick={() => handleMenuClick("/home")}
@@ -53,11 +53,11 @@ const Navbar = () => {
 
         {/* Menú de navegación */}
         <div className={styles.content_opcions_nav}>
-          <ul className="flex flex-col md:flex-row md:space-x-12 space-y-2 md:space-y-0 text-center">
+          <ul className="flex md:flex-row md:space-x-12 items-center">
             <li>
               <a
                 href="/ranking"
-                className={`font-semibold text-lg  text-white ${styles.text_hover_opcnav}`}
+                className={`font-semibold text-base ${styles.text_hover_opcnav}`}
               >
                 Ranking
               </a>
@@ -65,36 +65,44 @@ const Navbar = () => {
             <li>
               <Link
                 to="/comments"
-                className={`font-semibold text-lg  text-white ${styles.text_hover_opcnav}`}
+                className={`font-semibold text-base ${styles.text_hover_opcnav}`}
               >
                 Comentarios
               </Link>
             </li>
-          </ul>
-        </div>
+            <li>
+              <Link
+                to="/"
+                className={`font-semibold text-base ${styles.text_hover_opcnav}`}
+              >
+                Vacancias
+              </Link>
+            </li>
 
-        <div className={styles.content_opcions_nav}>
-          {user ? (
-            <div className="relative">
-              <button
-                className={`flex items-center font-semibold text-white ${styles.text_hover_opcnav} `}
-                onClick={() => setShowMenu(!showMenu)}
-              >
-                Hola, {user.name}
-                <FaChevronDown className="ml-2" size={14} />
-              </button>
-              {showMenu ? <Submenu showMenu={showMenu} logout={logout} /> : ""}
-            </div>
-          ) : (
-            <div>
-              <button
-                className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-1 px-8 border border-white hover:border-transparent rounded"
-                onClick={() => handleMenuClick("/auth/login")}
-              >
-                Iniciar Sesión
-              </button>
-            </div>
-          )}
+            <li>
+              {user ? (
+                <div className="relative">
+                  <button
+                    className={`flex items-center font-semibold ${styles.lblNameUser} `}
+                    onClick={() => setShowMenu(!showMenu)}
+                  >
+                    Hola, {user.name}
+                    <FaChevronDown className="ml-2" size={14} />
+                  </button>
+                  {showMenu ? <Submenu showMenu={showMenu} logout={logout} /> : ""}
+                </div>
+              ) : (
+                <div>
+                  <button
+                    className={`${styles.btn_iniciar_sesion}`}
+                    onClick={() => handleMenuClick("/auth/login")}
+                  >
+                    Iniciar Sesión
+                  </button>
+                </div>
+              )}
+            </li>
+          </ul>
         </div>
       </nav>
       <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} />

@@ -2,6 +2,17 @@
   display: block;
 }
 
+.content_opcions_nav {
+  background: white;
+  padding: 15px 35px 15px 50px;
+  position: absolute;
+  right: 0;
+  box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
 .hamburger_menu {
   display: none;
 }
@@ -28,21 +39,50 @@
 }
 
 .text_hover_opcnav {
-  position: relative; 
+  position: relative;
   color: white;
   text-decoration: none;
 }
 
 .text_hover_opcnav:hover {
-  color: var(--secundario-color); 
+  color: var(--secundario-color);
   transition: all 0.3s ease;
 }
 
+.btn_iniciar_sesion {
+  color: var(--secundario-color);
+  font-weight: 600;
+  border-radius: 50px;
+  border: 1px solid var(--principal-color);
+  padding: 0.2rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
+.btn_iniciar_sesion:hover {
+  color: white;
+  background-color: var(--secundario-color);
+  transition: all 0.8s ease;
+}
+
+.lblNameUser {
+  color: var(--secundario-color);
+  font-size: 1rem;
+}
+
+.lblNameUser:hover {
+  color: var(--principal-color);
+}
+
+.text_hover_opcnav {
+  color: var(--secundario-color);
+}
+
 .text_hover_opcnav::after {
-  content: ""; 
+  content: "";
   position: absolute;
   left: 0;
-  bottom: -80%;
+  bottom: -75%;
   width: 0;
   height: 4px;
   background-color: var(--secundario-color);
@@ -50,9 +90,9 @@
 }
 
 .text_hover_opcnav:hover::after {
+  color: var(--principal-color);
   width: 100%;
 }
-
 
 .submenu {
   z-index: 2000;

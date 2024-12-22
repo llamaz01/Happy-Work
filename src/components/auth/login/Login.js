@@ -43,7 +43,7 @@ const Login = () => {
   };
 
   return (
-    <div className="relative w-screen h-screen flex justify-center items-center text-white pt-16 z-0 ">
+    <div className="h-[100%] relative w-screen flex justify-center items-center text-white pt-16 z-0 mb-10 ">
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Imagen contenedor */}
         <div
