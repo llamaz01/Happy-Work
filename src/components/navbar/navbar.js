@@ -18,13 +18,13 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`relative bg-slate-600 p-3 h-14 ${styles.content_nav}`}>
+    <div className={`relative p-4 ${styles.content_nav}`}>
       <nav className="container mx-auto flex justify-between items-center">
         <div className={styles.clickable}>
           <img
             src="/image/logo2.png"
             alt="logo"
-            height={200}
+            height={250}
             width={150}
             className={`text-2xl font-bold text-white ${styles.fadein}`}
             onClick={() => handleMenuClick("/home")}
@@ -52,12 +52,12 @@ const Navbar = () => {
         </button>
 
         {/* Menú de navegación */}
-        <div className={`${styles.content_opcions_nav}`}>
-          <ul className="flex flex-col md:flex-row md:space-x-12 space-y-2 md:space-y-0 text-center">
+        <div className={styles.content_opcions_nav}>
+          <ul className="flex md:flex-row md:space-x-12 items-center">
             <li>
               <a
                 href="/ranking"
-                className="font-semibold hover:text-blue-500 text-blue-950"
+                className={`font-semibold text-base ${styles.text_hover_opcnav}`}
               >
                 Ranking
               </a>
@@ -65,33 +65,43 @@ const Navbar = () => {
             <li>
               <Link
                 to="/comments"
-                className="font-semibold hover:text-blue-500 text-blue-950"
+                className={`font-semibold text-base ${styles.text_hover_opcnav}`}
               >
                 Comentarios
               </Link>
             </li>
+            <li>
+              <Link
+                to="/"
+                className={`font-semibold text-base ${styles.text_hover_opcnav}`}
+              >
+                Vacancias
+              </Link>
+            </li>
 
-            {user ? (
-              <li className="relative">
-                <button
-                  className="flex items-center font-semibold text-blue-950 hover:text-blue-500 "
-                  onClick={() => setShowMenu(!showMenu)}
-                >
-                  Hola, {user.name}
-                  <FaChevronDown className="ml-2" size={14} />
-                </button>
-                {showMenu ? <Submenu showMenu={showMenu} logout={logout} /> : " "}
-              </li>
-            ) : (
-              <li>
-                <button
-                  className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent rounded"
-                  onClick={() => handleMenuClick("/auth/login")}
-                >
-                  Iniciar Sesión
-                </button>
-              </li>
-            )}
+            <li>
+              {user ? (
+                <div className="relative">
+                  <button
+                    className={`flex items-center font-semibold ${styles.lblNameUser} `}
+                    onClick={() => setShowMenu(!showMenu)}
+                  >
+                    Hola, {user.name}
+                    <FaChevronDown className="ml-2" size={14} />
+                  </button>
+                  {showMenu ? <Submenu showMenu={showMenu} logout={logout} /> : ""}
+                </div>
+              ) : (
+                <div>
+                  <button
+                    className={`${styles.btn_iniciar_sesion}`}
+                    onClick={() => handleMenuClick("/auth/login")}
+                  >
+                    Iniciar Sesión
+                  </button>
+                </div>
+              )}
+            </li>
           </ul>
         </div>
       </nav>

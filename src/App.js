@@ -15,10 +15,13 @@ import RegisterCompany from "./components/auth/register/RegisterCompany";
 import Comments from "./components/comments/home-comments";
 import DetailsComments from "./components/comments/details-commets";
 import Ranking from "./components/ranking/ranking";
+import Footer from "./components/common/footer/Footer";
+import PageNotFound from "./components/common/notFound/PageNotFound";
 
 function App() {
   return (
     <Router history={history}>
+
       <div>
         <Navbar />
         <Routes>
@@ -31,8 +34,10 @@ function App() {
           <Route path="/commets/detailscompany/:id" element={<DetailsComments />} />
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/" element={<Home />} />
+          <Route path="*" element={<PageNotFound/> } />
         </Routes>
         <ToastContainer />
+        <Footer />
       </div>
     </Router>
   );
