@@ -1,14 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles/home.module.css";
 import { useNavigate, Link } from "react-router-dom";
 import '@fontsource/inter';
+import useRanking from "../../hooks/useRanking";
+import Loader from "../common/loader/loader";
+import RankingTop from "../ranking/rankings-top";
+import { FaChevronDown } from "react-icons/fa";
 
 const Home = () => {
-  const navigate = useNavigate();
+  const { fetchRanked,
+    error,
+    errorResponse,
+    isLoading,
+    data } = useRanking();
+  const [showAll, setShowAll] = useState(false);
 
+  const navigate = useNavigate();
+  const [ranked, setRanked] = useState([]);
   const handleNavigate = (path) => {
     navigate(path);
   };
+
+  const fetchRanking = async (companyName = "") => {
+    try {
+      const response = await fetchRanked(companyName);
+      setRanked(response);
+    } catch (error) {
+      console.error("Error fetching ranking:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRanking();
+  }, []);
+
 
   return (
     <div className={`h-[100%] mb-10 ${styles.container}`}>
@@ -34,12 +59,29 @@ const Home = () => {
         </div>
 
         <div className={`bg-white mt-[-50px] max-w-6xl mx-auto rounded-lg shadow-2xl p-6 ${styles.ranking_home_opcion_container}`}>
-          asdasadas
+          {isLoading ? (
+            <Loader />
+          ) : ranked?.length > 0 ? (
+            ranked
+              .slice(0, showAll ? ranked.length : 3) 
+              .map((rank, index) => (
+                <RankingTop key={rank.id} data={rank} index={index} />
+              ))
+          ) : (
+            <p className="text-center text-gray-500">Ups.. No se ha podido encontrar la empresa.</p>
+          )}
+
+          {!showAll && ranked.length > 3 && (
+            <button
+              onClick={() => setShowAll(true)}
+              className="flex items-center mt-4 mx-auto px-4 py-2 text-purple-800 border border-purple-800 rounded-full hover:bg-purple-800 hover:text-white transition duration-300"
+              >
+              <span>Ver más</span>
+              <span><FaChevronDown size={16}  className="ml-2 text-purple-800 transition duration-300 group-hover:text-white"/></span>
+            </button>
+          )}
         </div>
-
       </div>
-
-
       <div className="w-screen text-center border-t-2 mt-10">
         <h1 className={`text-2xl font-bold mt-5 ${styles.txtPrincipalColor}`}>
           Navega por nuestras opciones
