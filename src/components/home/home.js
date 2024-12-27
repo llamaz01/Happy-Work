@@ -6,6 +6,7 @@ import useRanking from "../../hooks/useRanking";
 import Loader from "../common/loader/loader";
 import RankingTop from "../ranking/rankings-top";
 import { FaChevronDown } from "react-icons/fa";
+import Loading from "../common/loader/loading";
 
 const Home = () => {
   const { fetchRanked,
@@ -52,6 +53,7 @@ const Home = () => {
         </div>
       </header>
 
+      {ranked && ranked.length > 0 && (
       <div>
         <div className={`w-screen p-6 pb-16 ${styles.ranking_home_container}`}>
           <p className="text-white text-center text-xl font-bold ">Top de empresas mejores valoradas</p>
@@ -60,7 +62,7 @@ const Home = () => {
 
         <div className={`bg-white mt-[-50px] max-w-6xl mx-auto rounded-lg shadow-2xl p-6 ${styles.ranking_home_opcion_container}`}>
           {isLoading ? (
-            <Loader />
+            <Loading/>
           ) : ranked?.length > 0 ? (
             ranked
               .slice(0, showAll ? ranked.length : 3) 
@@ -73,15 +75,18 @@ const Home = () => {
 
           {!showAll && ranked.length > 3 && (
             <button
-              onClick={() => setShowAll(true)}
-              className="flex items-center mt-4 mx-auto px-4 py-2 text-purple-800 border border-purple-800 rounded-full hover:bg-purple-800 hover:text-white transition duration-300"
-              >
-              <span>Ver más</span>
-              <span><FaChevronDown size={16}  className="ml-2 text-purple-800 transition duration-300 group-hover:text-white"/></span>
-            </button>
+            onClick={() => setShowAll(true)}
+            className="group flex items-center mt-4 mx-auto px-4 py-2 text-purple-800 border border-purple-800 rounded-full hover:bg-purple-800 hover:text-white transition duration-300"
+          >
+            Ver más
+            <FaChevronDown size={16} className="ml-2 text-purple-800 transition duration-300 group-hover:text-white" />
+          </button>
+          
           )}
         </div>
       </div>
+      )}
+
       <div className="w-screen text-center border-t-2 mt-10">
         <h1 className={`text-2xl font-bold mt-5 ${styles.txtPrincipalColor}`}>
           Navega por nuestras opciones

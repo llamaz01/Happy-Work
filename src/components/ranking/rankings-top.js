@@ -17,7 +17,7 @@ const RankingTop = ({ data, index }) => {
             <div className="flex justify-between items-start space-x-8 mb-6">
                 <div>
                     <div>
-                        <h1 className={` text-2xl font-bold mb-1 break-words ${styles.txtSecundaryColor}`}> {`${index + 1}. ${data.name || "Cargando empresa..."}`}
+                        <h1 className={` text-xl font-bold mb-1 break-words ${styles.txtPrincipalColor}`}> {`${index + 1}. ${data.name || "Cargando empresa..."}`}
                         </h1>
                     </div>
                     <div className="flex flex-wrap items-center">
@@ -25,7 +25,7 @@ const RankingTop = ({ data, index }) => {
                             <p className={`text-base break-words mr-1 ${styles.txtSecundaryColor}`}>Categoria: </p>
                         </div>
                         <div>
-                            <p className={`text-sm break-words ${styles.txtSecundaryColor}`}> Decorativo para el hogar </p>
+                            <p className={`text-sm break-words ${styles.txtSecundaryColor}`}> {data.industry} </p>
                         </div>
                     </div>
                 </div>

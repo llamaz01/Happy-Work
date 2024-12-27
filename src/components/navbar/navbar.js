@@ -83,7 +83,7 @@ const Navbar = () => {
               {user ? (
                 <div className="relative">
                   <button
-                    className={`flex items-center font-semibold ${styles.lblNameUser} `}
+                    className={`flex p-1 items-center font-semibold ${styles.lblNameUser} `}
                     onClick={() => setShowMenu(!showMenu)}
                   >
                     Hola, {user.name}

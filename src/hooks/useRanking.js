@@ -47,13 +47,20 @@ const useRanking = () => {
     }
   };
 
-  const fetchRanked = async (companyName = "") => {
-    return handleRequest(() => api.get(`${RANKING_ENDPOINT}?companyName=${companyName}`));
+  const fetchRanked = async () => {
+    return handleRequest(() => api.get(`${RANKING_ENDPOINT}`));
   };
 
 
+  const fetchCompanyFilters = async (companyName = "", industry = "") => {
+    return handleRequest(() =>
+      api.get(`${RANKING_ENDPOINT}?companyName=${companyName}&industry=${industry}`)
+    );
+  };
+
   return {
     fetchRanked,
+    fetchCompanyFilters,
     error,
     errorResponse,
     isLoading,
