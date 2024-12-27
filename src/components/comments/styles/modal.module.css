@@ -20,13 +20,21 @@
   max-width: 500px;
   position: relative;
   animation: fadeIn 0.3s ease-in-out;
-  overflow: hidden;
+  max-height: 80vh;  
+  overflow-y: auto; 
 }
 
 .modal-content-prin {
   color: #44546c;
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+/* Hacer que el contenido del modal sea desplazable si se excede la altura */
+.modal-content .content {
+  max-height: calc(80vh - 60px); 
+  overflow-y: auto; /* Permite el desplazamiento vertical */
+  padding-bottom: 20px; 
 }
 
 .hr_comment {
@@ -44,6 +52,8 @@
     transform: translateY(0);
   }
 }
+
+
 
 label {
   display: block;
@@ -150,4 +160,52 @@ textarea.input {
 .Toastify__toast--error {
   background-color: #f44336;
   color: white;
+}
+
+
+/* Estilo para el contenedor de la casilla de verificación */
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px; /* Espacio entre la casilla y el siguiente contenido */
+}
+
+/* Estilo para el input tipo checkbox */
+.checkbox input {
+  transform: scale(1.2); /* Aumenta ligeramente el tamaño del checkbox */
+}
+
+/* Estilo para el texto junto al checkbox */
+.checkbox span {
+  font-size: 1rem;
+  color: #555555;
+}
+
+/* Estilo para los campos adicionales cuando se selecciona el checkbox */
+.newEmpresaFields {
+  margin-top: 20px;
+}
+
+/* Estilos para los campos de entrada (input) dentro de newEmpresaFields */
+.newEmpresaFields label {
+  display: block;
+  margin-bottom: 15px; /* Espacio entre cada campo */
+}
+
+.newEmpresaFields input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Estilo del texto que describe el campo (como 'Nombre de la empresa') */
+.newEmpresaFields span {
+  font-size: 1rem;
+  color: #555;
+  display: block;
+  margin-bottom: 5px;
 }

@@ -210,7 +210,7 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
             value={commentData.comment}
             onChange={(e) => handleInputChange("comment", e.target.value)}
             placeholder="Escribe tu comentario..."
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </label>
         {/* Positivos */}
@@ -220,7 +220,7 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
             value={commentData.positiveComment}
             onChange={(e) => handleInputChange("positives", e.target.value)}
             placeholder="Escribe los puntos positivos..."
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+            className="w-full  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
           />
         </label>
         {/* Negativos */}
@@ -230,7 +230,7 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
             value={commentData.negativeComment}
             onChange={(e) => handleInputChange("negatives", e.target.value)}
             placeholder="Escribe los puntos negativos..."
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+            className="w-full  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
           />
         </label>
         {/* Valoraciones */}
