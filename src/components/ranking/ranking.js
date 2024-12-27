@@ -47,8 +47,8 @@ const Ranking = () => {
   };
 
   useEffect(() => {
-    fetchRanking(); // Fetch initial data
-    fetchIndustry(); // Fetch industry options
+    fetchRanking();
+    fetchIndustry();
   }, []);
 
   return (
@@ -64,7 +64,7 @@ const Ranking = () => {
           <img src="/image/ranking.png" alt="ranking" width={150} className={styles.imgRanking} />
         </div>
       </div>
-      
+
       <div className="mt-10">
         <h1 className={`text-center font-semibold text-xl ${styles.txtSecundaryColor}`}>Tienes alguna empresa en mente?</h1>
       </div>
@@ -77,7 +77,7 @@ const Ranking = () => {
             onChange={handleIndustryChange}
           >
             <option value="">Selecciona una Categoria</option>
-            {industries.map((industry, index) => (
+            {Array.isArray(industries) && industries.map((industry, index) => (
               <option key={index} value={industry}>
                 {industry}
               </option>
@@ -107,7 +107,7 @@ const Ranking = () => {
       </div>
 
       <hr className="mt-10 mb-10" />
-      <div className="">
+      <div>
         {error && (
           <p className="text-center text-red-500">Error al cargar el ranking: {errorResponse}</p>
         )}
