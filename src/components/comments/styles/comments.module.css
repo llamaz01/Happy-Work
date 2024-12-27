@@ -7,8 +7,9 @@
 }
 
 
-.imgComentarios{
-  
+.contentImgComentarios{
+  position: relative;
+  top: 80px;
 }
 
 .container {
@@ -17,7 +18,7 @@
 }
 
 .bgDetailsComments {
-  background-color: #44546c;
+  background-color: white;
 }
 
 .header {
@@ -46,15 +47,18 @@
 
 .addCommentButton {
   padding: 8px 12px;
-  background-color: #3b82f6;
-  color: #fff;
-  border: none;
+  background-color:white;
+  color: var(--principal-color);
+  border: 1px solid var(--principal-color);
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .addCommentButton:hover {
-  background-color: #326ecf;
+  background-color: var(--principal-color);
+  color: white;
+  transform: scale(1.05);
 }
 
 .empresasList {
