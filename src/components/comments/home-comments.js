@@ -68,83 +68,74 @@ const Comments = () => {
     setFilteredEmpresas(filtered);
   };
 
-  if (loading) {
-    return <Loader />;
-  }
-
-  if (error) {
-    return <p className={styles.error}>Error: {error}</p>;
-  }
-
   return (
     <div className={`pt-6 max-w-5xl mx-auto`}>
-      <header className={` flex justify-between items-center flex-col lg:flex-row mt-4 lg:mt-0 `}>
-        <div className="text-blue-950 font-bold text-center text-4xl p-4 rounded-md">
-          <h1>Comentarios y Calificaciones</h1>
-        </div>
-        <div className="flex">
-          <div className="flex items-center border border-gray-300 rounded-md p-2">
-            <FaSearch className="text-blue-950 mr-2" />
-            <input
-              type="text"
-              placeholder="Buscar Empresa"
-              value={searchTerm}
-              onChange={handleSearch}
-            />
+      <div className={`flex justify-evenly flex-wrap mt-4 lg:mt-0 shadow-lg p-2 ${styles.contentTxtRanking}`}>
+        <div className="max-w-2xl">
+          <h1 className={`font-bold text-4xl rounded-md ${styles.txtPrincipalColor}`}>Comentarios</h1>
+          <div className={`mt-5 text-sm ${styles.txtSecundaryColor}`}>
+            <p>Te mostramos las opiniones de los diferentes usuarios acerca de una empresa en cuestión, si tienes algo que comentarnos, hazlo!</p>
           </div>
-          <button
-            onClick={handleSearchSubmit}
-            className="ml-2 p-2 bg-white text-blue-500 border-2 border-blue-500 rounded-md hover:border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300"
-          >
-            Buscar
-          </button>
+          <div className="mt-5">
+            <button
+              className={`${styles.addCommentButton} w-auto max-w-xs`}
+              onClick={() => setShowModal(true)}
+            >
+              Agregar comentario
+            </button>
+          </div>
         </div>
-      </header>
-      <div className={`flex justify-end mb-5 mt-3 ${styles.content_btn_addComments}`}>
-        <button
-          className={`${styles.addCommentButton} w-auto max-w-xs`}
-          onClick={() => setShowModal(true)}
-        >
-          Agregar comentario
-        </button>
+        <div className={styles.contentImgComentarios}>
+          <img src="/image/comentarios.png" alt="comentarios" width={200} />
+        </div>
       </div>
 
-      <div className={`space-y-6`}>
-        {filteredEmpresas.length > 0 ? (
-          filteredEmpresas.map((empresa) => (
-            <div
-              key={empresa.id}
-              className={`bg-white shadow-md p-6 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-lg transition-shadow duration-300  ${styles.bgDetailsComments}`}
-            >
-              <div className="flex-1">
-                <h2 className="text-2xl font-bold text-gray-200 break-words">{empresa.name}</h2>
-                <p className="text-gray-300 mt-2 break-words">{empresa.description}</p>
-              </div>
-              <div className="mt-4 md:mt-0 md:ml-6 flex flex-col items-start md:items-end">
-                <p className="flex items-center space-x-4">
-                  <RenderStars rating={empresa.averageRating} />
-                  <span className="text-gray-400"><strong>{empresa.averageRating || "0.0"}</strong></span>
 
-                </p>
 
-                {empresa.totalComments > 0 ? (
-                  <button
-                    className="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors duration-300"
-                    onClick={() => navigate(`/commets/detailscompany/${empresa.id}`)}
-                  >
-                    {empresa.totalComments === 1
-                      ? `Ver ${empresa.totalComments} comentario`
-                      : `Ver los ${empresa.totalComments} comentarios`}
-                  </button>
-                ) : (
-                  <p className="mt-2 text-gray-400">0 comentarios</p>
-                )}
-              </div>
-            </div>
-          ))
-        ) : (
-          <p className="text-center text-gray-500 text-lg">Ups.. No se han podido encontrar la empresa</p>
+
+      <div className={`space-y-6 mt-16`}>
+        {error && (
+          <p className="text-center text-red-500">Error al cargar el ranking: {error}</p>
         )}
+
+        {loading ? (
+          <Loader />
+        ) :
+          filteredEmpresas.length > 0 ? (
+            filteredEmpresas.map((empresa) => (
+              <div
+                key={empresa.id}
+                className={`shadow-md p-6 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-lg transition-shadow duration-300  ${styles.bgDetailsComments}`}
+              >
+                <div className="flex-1">
+                  <h2 className={`text-xl font-bold break-words ${styles.txtPrincipalColor}`}>{empresa.name}</h2>
+                  <p className={`mt-2 text-sm break-words ${styles.txtSecundaryColor}`}>{empresa.description}</p>
+                </div>
+                <div className="mt-4 md:mt-0 md:ml-6 flex flex-col items-start md:items-end">
+                  <p className="flex items-center space-x-4">
+                    <RenderStars rating={empresa.averageRating} />
+                    <span className={styles.txtPrincipalColor}><strong>{empresa.averageRating || "0.0"}</strong></span>
+
+                  </p>
+
+                  {empresa.totalComments > 0 ? (
+                    <button
+                      className="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors duration-300"
+                      onClick={() => navigate(`/commets/detailscompany/${empresa.id}`)}
+                    >
+                      {empresa.totalComments === 1
+                        ? `Ver ${empresa.totalComments} comentario`
+                        : `Ver los ${empresa.totalComments} comentarios`}
+                    </button>
+                  ) : (
+                    <p className="mt-2 text-gray-400">0 comentarios</p>
+                  )}
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="text-center text-gray-500 text-lg">Ups.. No se han podido encontrar la empresa</p>
+          )}
       </div>
 
       {showModal && (
