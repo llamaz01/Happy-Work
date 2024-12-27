@@ -78,28 +78,18 @@ const Comments = () => {
 
   return (
     <div className={`pt-6 max-w-5xl mx-auto`}>
-      <header className={` flex justify-between items-center flex-col lg:flex-row mt-4 lg:mt-0 `}>
-        <div className="text-blue-950 font-bold text-center text-4xl p-4 rounded-md">
-          <h1>Comentarios y Calificaciones</h1>
-        </div>
-        <div className="flex">
-          <div className="flex items-center border border-gray-300 rounded-md p-2">
-            <FaSearch className="text-blue-950 mr-2" />
-            <input
-              type="text"
-              placeholder="Buscar Empresa"
-              value={searchTerm}
-              onChange={handleSearch}
-            />
+      <div className={`flex justify-evenly flex-wrap mt-4 lg:mt-0 shadow-lg p-2 ${styles.contentTxtRanking}`}>
+        <div className="max-w-2xl">
+          <h1 className={`font-bold text-4xl rounded-md ${styles.txtPrincipalColor}`}>Comentarios</h1>
+          <div className={`mt-5 text-sm ${styles.txtSecundaryColor}`}>
+            <p>Te mostramos las opiniones de los diferentes usuarios acerca de una empresa en cuestión, si tienes algo que comentarnos, hazlo!</p>
           </div>
-          <button
-            onClick={handleSearchSubmit}
-            className="ml-2 p-2 bg-white text-blue-500 border-2 border-blue-500 rounded-md hover:border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300"
-          >
-            Buscar
-          </button>
         </div>
-      </header>
+        <div>
+          <img src="/image/comentarios.png" alt="comentarios" width={200} className={styles.imgComentarios} />
+        </div>
+      </div>
+
       <div className={`flex justify-end mb-5 mt-3 ${styles.content_btn_addComments}`}>
         <button
           className={`${styles.addCommentButton} w-auto max-w-xs`}

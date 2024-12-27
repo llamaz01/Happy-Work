@@ -47,8 +47,8 @@ const Ranking = () => {
   };
 
   useEffect(() => {
-    fetchRanking(); // Fetch initial data
-    fetchIndustry(); // Fetch industry options
+    fetchRanking(); 
+    fetchIndustry(); 
   }, []);
 
   return (

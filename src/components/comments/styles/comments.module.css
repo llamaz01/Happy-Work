@@ -1,3 +1,16 @@
+.txtPrincipalColor {
+  color: var(--terciario-color);
+}
+
+.txtSecundaryColor {
+  color: var(--secundario-color);
+}
+
+
+.imgComentarios{
+  
+}
+
 .container {
   padding: 20px;
   font-family: "Inter", sans-serif;
