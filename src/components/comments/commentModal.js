@@ -18,12 +18,20 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
     workEnvironment: "Ambiente laboral",
     professionalDevelopment: "Desarrollo profesional",
   };
+  const [isNewEmpresa, setIsNewEmpresa] = useState(false);
+  const [customEmpresa, setCustomEmpresa] = useState({
+    companyName: "",
+    companyLocation: "",
+    industry: "",
+  });
 
   const [commentData, setCommentData] = useState({
     user: user ? user._id : "",
     name: user ? user.name : "",
     isAnonymous: false,
     comment: "",
+    positiveComment:"",
+    negativeComment:"",
     ratings: {
       workLifeBalance: 0,
       salary: 0,
@@ -55,9 +63,19 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
       ratings: { ...prev.ratings, [field]: value },
     }));
   };
+  const handleCustomEmpresaChange = (field, value) => {
+    setCustomEmpresa((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
 
   const postComment = async () => {
-    if (!selectedEmpresa || !commentData.comment) {
+    if (
+      (!selectedEmpresa && !isNewEmpresa) ||
+      !commentData.comment ||
+      (isNewEmpresa && !customEmpresa.companyName)
+    ) {
       toast.error("Por favor completa todos los campos requeridos.", {
         position: "top-center",
         autoClose: 3000,
@@ -66,20 +84,31 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
     }
 
     try {
+      const payload = {
+        user: commentData.user,
+        name: commentData.name,
+        isAnonymous: commentData.isAnonymous,
+        comment: commentData.comment,
+        positiveComment: commentData.positiveComment,
+        negativeComment: commentData.negativeComment,
+        ratings: commentData.ratings,
+      };
+
+      if (isNewEmpresa) {
+        payload.companyName = customEmpresa.companyName;
+        payload.companyLocation = customEmpresa.companyLocation;
+        payload.industry = customEmpresa.industry;
+      } else {
+        payload.company = selectedEmpresa.value;
+      }
+
       const response = await fetch(`${API_URL}/api/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        body: JSON.stringify({
-          user: commentData.user,
-          name: commentData.name,
-          isAnonymous: commentData.isAnonymous,
-          company: selectedEmpresa.value,
-          comment: commentData.comment,
-          ratings: commentData.ratings,
-        }),
+        body: JSON.stringify(payload),
       });
 
       const responseData = await response.json();
@@ -93,10 +122,13 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
       onClose();
     } catch (error) {
       console.error("Error al enviar el comentario:", error);
-      toast.error("Hubo un error al enviar tu comentario. Intenta de nuevo más tarde.", {
-        position: "top-center",
-        autoClose: 3000,
-      });
+      toast.error(
+        "Hubo un error al enviar tu comentario. Intenta de nuevo más tarde.",
+        {
+          position: "top-center",
+          autoClose: 3000,
+        }
+      );
     }
   };
 
@@ -123,9 +155,54 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
             options={empresaOptions}
             value={selectedEmpresa}
             onChange={setSelectedEmpresa}
+            isDisabled={isNewEmpresa}
             placeholder="Escribe para buscar..."
           />
         </label>
+
+        <label className={styles.checkbox}>
+          <input
+            type="checkbox"
+            checked={isNewEmpresa}
+            onChange={(e) => setIsNewEmpresa(e.target.checked)}
+          />
+          <span>Agregar nueva empresa</span>
+        </label>
+        {isNewEmpresa && (
+          <div className={styles.newEmpresaFields}>
+            <label>
+              <span>Nombre de la empresa:</span>
+              <input
+                type="text"
+                value={customEmpresa.companyName}
+                onChange={(e) =>
+                  handleCustomEmpresaChange("companyName", e.target.value)
+                }
+              />
+            </label>
+            <label>
+              <span>Ubicación:</span>
+              <input
+                type="text"
+                value={customEmpresa.companyLocation}
+                onChange={(e) =>
+                  handleCustomEmpresaChange("companyLocation", e.target.value)
+                }
+              />
+            </label>
+            <label>
+              <span>Industria:</span>
+              <input
+                type="text"
+                value={customEmpresa.industry}
+                onChange={(e) =>
+                  handleCustomEmpresaChange("industry", e.target.value)
+                }
+              />
+            </label>
+          </div>
+        )}
+
         {/* Comentario */}
         <label>
           <span>Comentario:</span>
@@ -133,7 +210,27 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
             value={commentData.comment}
             onChange={(e) => handleInputChange("comment", e.target.value)}
             placeholder="Escribe tu comentario..."
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </label>
+        {/* Positivos */}
+        <label>
+          <span>Puntos positivos:</span>
+          <textarea
+            value={commentData.positiveComment}
+            onChange={(e) => handleInputChange("positives", e.target.value)}
+            placeholder="Escribe los puntos positivos..."
+            className="w-full  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+          />
+        </label>
+        {/* Negativos */}
+        <label>
+          <span>Puntos negativos:</span>
+          <textarea
+            value={commentData.negativeComment}
+            onChange={(e) => handleInputChange("negatives", e.target.value)}
+            placeholder="Escribe los puntos negativos..."
+            className="w-full  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
           />
         </label>
         {/* Valoraciones */}
