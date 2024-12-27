@@ -77,7 +77,7 @@ const Comments = () => {
   }
 
   return (
-    <div className={`h-screen pt-6 max-w-5xl mx-auto`}>
+    <div className={`pt-6 max-w-5xl mx-auto`}>
       <header className={` flex justify-between items-center flex-col lg:flex-row mt-4 lg:mt-0 `}>
         <div className="text-blue-950 font-bold text-center text-4xl p-4 rounded-md">
           <h1>Comentarios y Calificaciones</h1>

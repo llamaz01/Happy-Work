@@ -36,7 +36,7 @@ const Footer = () => {
                 {/* Sección 3: Redes Sociales */}
                 <div>
                     <h4 className="text-xl font-bold mb-4 text-center mt-5">Síguenos</h4>
-                    <div className="flex justify-center space-x-10">
+                    <div className="flex justify-center space-x-6">
                         <a href="#" className="hover:text-blue-500 text-2xl">
                             <FaFacebook />
                         </a>
@@ -46,7 +46,7 @@ const Footer = () => {
                         <a href="#" className="hover:text-pink-500 text-2xl">
                             <FaInstagram />
                         </a>
-                        <a href="#" className="hover:text-blue-400 text-2xl">
+                        <a href="mailto:happyworkvoz@gmail.com" className="hover:text-blue-400 text-2xl">
                             < FaEnvelope />
                         </a>
 
