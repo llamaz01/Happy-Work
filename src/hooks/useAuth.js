@@ -1,13 +1,13 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useAuth = () => {
   const AUTH_ENDPOINT = "/api/auth";
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
   const [errorResponse, setErrorResponse] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [isLoading, setIsLoading] = useState (false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const api = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
@@ -53,13 +53,31 @@ const useAuth = () => {
 
 
   const postLogin = async (params) => {
-    handleRequest(() => api.post(`${AUTH_ENDPOINT}/login`, params));
+    return handleRequest(() => api.post(`${AUTH_ENDPOINT}/login`, params));
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsAuthenticated(true);
+      const user = localStorage.getItem("user");
+      if (user) {
+        try {
+          setData(JSON.parse(user));
+        } catch (error) {
+          console.error("Error al parsear el usuario del localStorage:", error);
+          setData(null); // Reiniciar los datos si hay un error
+        }
+      }
+    }
+  }, []);
+  
 
   return {
     postLogin,
     postRegisterUser,
     postRegisterCompany,
+    isAuthenticated,
     error,
     errorResponse,
     isLoading,

@@ -16,12 +16,14 @@ import DetailsComments from "./components/comments/details-commets";
 import Ranking from "./components/ranking/ranking";
 import Footer from "./components/common/footer/Footer";
 import PageNotFound from "./components/common/notFound/PageNotFound";
+import MinutesLogin from "./components/common/minutesLogin/MinutesLogin";
 
 function App() {
   return (
     <Router>
       <div id="app-container">
         <Navbar />
+        <MinutesLogin/>
         <main id="main-content">
           <Routes>
             <Route path="/home" element={<Home />} />

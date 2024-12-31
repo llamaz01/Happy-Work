@@ -5,6 +5,7 @@ import "../src/components/styles/global-styles.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { UserProvider } from "../src/contexts/userProvider";
+import 'flowbite';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
