@@ -7,6 +7,7 @@ import Loader from "../common/loader/loader";
 import RankingTop from "../ranking/rankings-top";
 import { FaChevronDown } from "react-icons/fa";
 import Loading from "../common/loader/loading";
+import Carousel from "../common/carousel/Carousel";
 
 const Home = () => {
   const { fetchRanked,
@@ -38,9 +39,9 @@ const Home = () => {
 
   return (
     <div className={`h-[100%] mb-10 ${styles.container}`}>
-      <header className={`flex items-center justify-center ${styles.header}`}>
+      <header className="" >
 
-        <div className={`${styles.headerText}`}>
+        {/* <div className={`${styles.headerText}`}>
           <div className={styles.titleWrapper}>
             <h1>Happy Work</h1>
           </div>
@@ -50,7 +51,8 @@ const Home = () => {
 
         <div>
           <img src="/image/developer.png" alt="imagen_inicio" width={500} />
-        </div>
+        </div> */}
+        <Carousel/>
       </header>
 
       {ranked && ranked.length > 0 && (

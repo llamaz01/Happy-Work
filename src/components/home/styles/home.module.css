@@ -12,8 +12,9 @@
 }
 
 .header {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  /* margin-top: 50px;
+  margin-bottom: 50px; */
+  height: 50vh;
 }
 
 .headerText h1 {
