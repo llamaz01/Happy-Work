@@ -60,7 +60,7 @@ const Ranking = () => {
             <p>Te mostramos las empresas mejor valoradas por nuestra comunidad. Descubre cuáles destacan en calidad y confianza según las opiniones de los usuarios</p>
           </div>
         </div>
-        <div>
+        <div className={styles.contentImgRanking}>
           <img src="/image/ranking.png" alt="ranking" width={150} className={styles.imgRanking} />
         </div>
       </div>
@@ -69,42 +69,45 @@ const Ranking = () => {
         <h1 className={`text-center font-semibold text-xl ${styles.txtSecundaryColor}`}>Tienes alguna empresa en mente?</h1>
       </div>
 
-      <div className="flex justify-center flex-wrap space-x-4 mt-5 text-center">
-        <div className="relative inline-block mt-2 w-64">
-          <select
-            className="block w-full h-full p-2 border border-gray-300 rounded-md bg-white text-gray-700 focus:outline-none"
-            value={selectedIndustry}
-            onChange={handleIndustryChange}
-          >
-            <option value="">Selecciona una Categoria</option>
-            {Array.isArray(industries) && industries.map((industry, index) => (
-              <option key={index} value={industry}>
-                {industry}
-              </option>
-            ))}
-          </select>
+      <div className={`flex flex-col sm:flex-row justify-center sm:space-x-4 space-y-4 sm:space-y-0 mt-5 text-center ${styles.contentFilters}`}>
+
+        <div className="flex items-center ">
+
+          <input
+            type="text"
+            placeholder="Buscar Empresa"
+            value={searchTerm}
+            onChange={handleSearch}
+            className="flex-1 ml-1 bg-white border border-gray-300 rounded-md p-2 w-full sm:w-auto bg-white"
+          />
         </div>
 
-        <div className="flex justify-center mt-2">
-          <div className="flex items-center border border-gray-300 rounded-md p-2">
-            <FaSearch className="mr-2 text-gray-300" />
-            <input
-              type="text"
-              placeholder="Buscar Empresa"
-              value={searchTerm}
-              onChange={handleSearch}
-              className="flex-1 focus:outline-none"
-            />
+        <div className="flex flex-col sm:flex-row w-full sm:w-auto items-center sm:items-stretch space-y-4 sm:space-y-0 sm:space-x-2">
+          <div className="relative inline-block w-full h-full sm:w-64">
+            <select
+              className="block w-full h-full p-2 border border-gray-300 rounded-md bg-white text-gray-700 focus:outline-none"
+              value={selectedIndustry}
+              onChange={handleIndustryChange}
+            >
+              <option value="">Selecciona una Categoria</option>
+              {Array.isArray(industries) &&
+                industries.map((industry, index) => (
+                  <option key={index} value={industry}>
+                    {industry}
+                  </option>
+                ))}
+            </select>
           </div>
 
           <button
             onClick={handleSearchSubmit}
-            className="ml-2 p-2 border-2 border-purple-400 text-purple-500 rounded-md  hover:bg-purple-500 hover:text-white transition-colors duration-300"
+            className="p-2 border-2 border-purple-400 text-purple-500 rounded-md w-full sm:w-auto hover:bg-purple-500 hover:text-white hover:border-white transition-colors duration-300"
           >
             Buscar
           </button>
         </div>
       </div>
+
 
       <hr className="mt-10 mb-10" />
       <div>
