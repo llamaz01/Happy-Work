@@ -14,27 +14,25 @@
 .modal-content {
   background: #ffffff;
   padding: 20px;
-  border-radius: 0 0 10px 10px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   width: 90%;
   max-width: 500px;
   position: relative;
   animation: fadeIn 0.3s ease-in-out;
-  max-height: 80vh;  
-  overflow-y: auto; 
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .modal-content-prin {
-  color: #44546c;
+  color: var(--terciario-color);
   font-size: 1.2rem;
   font-weight: bold;
 }
 
-/* Hacer que el contenido del modal sea desplazable si se excede la altura */
 .modal-content .content {
-  max-height: calc(80vh - 60px); 
-  overflow-y: auto; /* Permite el desplazamiento vertical */
-  padding-bottom: 20px; 
+  max-height: calc(80vh - 60px);
+  overflow-y: auto;
+  padding-bottom: 20px;
 }
 
 .hr_comment {
@@ -52,8 +50,6 @@
     transform: translateY(0);
   }
 }
-
-
 
 label {
   display: block;
@@ -107,7 +103,7 @@ textarea.input {
 }
 
 .cancel-button {
-  background: #e74c3c;
+  background: transparent;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -115,14 +111,17 @@ textarea.input {
   cursor: pointer;
   font-size: 1rem;
   transition: background 0.3s ease;
+  color: var(--principal-color);
+  border: 1px solid var(--principal-color);
 }
 
 .cancel-button:hover {
-  background: #c0392b;
+  background: var(--terciario-color);
+  color: white;
 }
 
 .submit-button {
-  background: #2ecc71;
+  background: var(--principal-color);
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -133,7 +132,7 @@ textarea.input {
 }
 
 .submit-button:hover {
-  background: #27ae60;
+  background: var(--terciario-color);
 }
 
 .checkbox {
@@ -163,34 +162,30 @@ textarea.input {
 }
 
 
-/* Estilo para el contenedor de la casilla de verificación */
 .checkbox {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px; /* Espacio entre la casilla y el siguiente contenido */
+  margin-bottom: 20px; 
 }
 
-/* Estilo para el input tipo checkbox */
+
 .checkbox input {
-  transform: scale(1.2); /* Aumenta ligeramente el tamaño del checkbox */
+  transform: scale(1.2);
 }
 
-/* Estilo para el texto junto al checkbox */
 .checkbox span {
   font-size: 1rem;
   color: #555555;
 }
 
-/* Estilo para los campos adicionales cuando se selecciona el checkbox */
 .newEmpresaFields {
   margin-top: 20px;
 }
 
-/* Estilos para los campos de entrada (input) dentro de newEmpresaFields */
 .newEmpresaFields label {
   display: block;
-  margin-bottom: 15px; /* Espacio entre cada campo */
+  margin-bottom: 15px; 
 }
 
 .newEmpresaFields input {
@@ -202,7 +197,6 @@ textarea.input {
   box-sizing: border-box;
 }
 
-/* Estilo del texto que describe el campo (como 'Nombre de la empresa') */
 .newEmpresaFields span {
   font-size: 1rem;
   color: #555;

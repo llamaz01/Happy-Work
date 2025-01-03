@@ -30,8 +30,8 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
     name: user ? user.name : "",
     isAnonymous: false,
     comment: "",
-    positiveComment:"",
-    negativeComment:"",
+    positiveComment: "",
+    negativeComment: "",
     ratings: {
       workLifeBalance: 0,
       salary: 0,
@@ -145,10 +145,19 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
   return (
     <div className={styles["modal-overlay"]}>
       <div className={styles["modal-content"]}>
-        <div className={styles["modal-content-prin"]}>
-          <h2>Agregar Comentario</h2>
+        <div className="text-right font-bold">
+          <button
+            onClick={onClose}
+            className={styles["close-button"]}
+            aria-label="Cerrar"
+          >
+            &times;
+          </button>
         </div>
-        <hr className={styles.hr_comment} />
+        <div className={`mb-4`}>
+          <h2>Agregar Comentario</h2>
+          <hr className={styles.hr_comment} />
+        </div>
         <label>
           <span>Seleccionar Empresa:</span>
           <Select
@@ -270,7 +279,7 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
             onChange={(e) => handleInputChange("isAnonymous", e.target.checked)}
             className="hidden peer"
           />
-          <div className="w-6 h-6 border-2 border-gray-300 rounded-md flex items-center justify-center bg-white peer-checked:bg-blue-500">
+          <div className="w-6 h-6 border-2 border-gray-300 rounded-md flex items-center justify-center bg-white peer-checked:bg-purple-500">
           </div>
           <span>Enviar comentario de forma anónima</span>
         </label>

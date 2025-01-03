@@ -70,14 +70,14 @@ const Navbar = () => {
                 Comentarios
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/"
                 className={`font-semibold text-base ${styles.text_hover_opcnav}`}
               >
                 Vacancias
               </Link>
-            </li>
+            </li> */}
 
             <li>
               {user ? (
