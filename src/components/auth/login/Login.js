@@ -49,7 +49,7 @@ const Login = () => {
         <div
           className={`relative bg-blue-500 p-4 text-white ${styles.content_image_login}`}
           style={{
-            backgroundImage: "url('/image/empoderatuvoz.gif')",
+            backgroundImage: "url('/image/empoderatuvoz.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -117,7 +117,7 @@ const Login = () => {
             />
 
             <button
-              className="w-full h-9 p-2 rounded-xl bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent"
+              className="w-full h-9 p-2 rounded-xl bg-transparent hover:bg-purple-600 text-purple-600 font-semibold hover:text-white py-1 px-8 border border-purple-600 hover:border-transparent"
               onClick={onSubmit}
               disabled={isLoading}
             >
@@ -129,7 +129,7 @@ const Login = () => {
               <label>
                 <a
                   href="#olvidastelacontraseña"
-                  className="underline text-blue-950 font-semibold text-sm"
+                  className="underline text-purple-950 font-semibold text-sm"
                 >
                   Olvidaste tu contraseña?
                 </a>
@@ -139,7 +139,7 @@ const Login = () => {
                 <span className="inline">
                   <a
                     href="/auth/register"
-                    className="underline text-blue-950 font-semibold"
+                    className="underline text-purple-950 font-semibold"
                   >
                     {" "}
                     Registrarme!

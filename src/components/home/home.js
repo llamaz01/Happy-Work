@@ -39,9 +39,8 @@ const Home = () => {
 
   return (
     <div className={`h-[100%] mb-10 ${styles.container}`}>
-      <header className="" >
-
-        {/* <div className={`${styles.headerText}`}>
+      <header className={`flex items-center justify-center ${styles.header}`}>
+        <div className={`${styles.headerText}`}>
           <div className={styles.titleWrapper}>
             <h1>Happy Work</h1>
           </div>
@@ -51,42 +50,42 @@ const Home = () => {
 
         <div>
           <img src="/image/developer.png" alt="imagen_inicio" width={500} />
-        </div> */}
-        <Carousel/>
+        </div>
+        {/* <Carousel/> */}
       </header>
 
       {ranked && ranked.length > 0 && (
-      <div>
-        <div className={`w-screen p-6 pb-16 ${styles.ranking_home_container}`}>
-          <p className="text-white text-center text-xl font-bold ">Top de empresas mejores valoradas</p>
-          <p className="text-gray-100 text-center mt-3 "> Te mostramos algunas de las empresas mejor evaluadas por nuestros usuarios </p>
-        </div>
+        <div>
+          <div className={`w-screen p-6 pb-16 ${styles.ranking_home_container}`}>
+            <p className="text-white text-center text-xl font-bold ">Top de empresas mejores valoradas</p>
+            <p className="text-gray-100 text-center mt-3 "> Te mostramos algunas de las empresas mejor evaluadas por nuestros usuarios </p>
+          </div>
 
-        <div className={`bg-white mt-[-50px] max-w-6xl mx-auto rounded-lg shadow-2xl p-6 ${styles.ranking_home_opcion_container}`}>
-          {isLoading ? (
-            <Loading/>
-          ) : ranked?.length > 0 ? (
-            ranked
-              .slice(0, showAll ? ranked.length : 3) 
-              .map((rank, index) => (
-                <RankingTop key={rank.id} data={rank} index={index} />
-              ))
-          ) : (
-            <p className="text-center text-gray-500">Ups.. No se ha podido encontrar la empresa.</p>
-          )}
+          <div className={`bg-white mt-[-50px] max-w-6xl mx-auto rounded-lg shadow-2xl p-6 ${styles.ranking_home_opcion_container}`}>
+            {isLoading ? (
+              <Loading />
+            ) : ranked?.length > 0 ? (
+              ranked
+                .slice(0, showAll ? ranked.length : 3)
+                .map((rank, index) => (
+                  <RankingTop key={rank.id} data={rank} index={index} />
+                ))
+            ) : (
+              <p className="text-center text-gray-500">Ups.. No se ha podido encontrar la empresa.</p>
+            )}
 
-          {!showAll && ranked.length > 3 && (
-            <button
-            onClick={() => setShowAll(true)}
-            className="group flex items-center mt-4 mx-auto px-4 py-2 text-purple-800 border border-purple-800 rounded-full hover:bg-purple-800 hover:text-white transition duration-300"
-          >
-            Ver más
-            <FaChevronDown size={16} className="ml-2 text-purple-800 transition duration-300 group-hover:text-white" />
-          </button>
-          
-          )}
+            {!showAll && ranked.length > 3 && (
+              <button
+                onClick={() => setShowAll(true)}
+                className="group flex items-center mt-4 mx-auto px-4 py-2 text-purple-800 border border-purple-800 rounded-full hover:bg-purple-800 hover:text-white transition duration-300"
+              >
+                Ver más
+                <FaChevronDown size={16} className="ml-2 text-purple-800 transition duration-300 group-hover:text-white" />
+              </button>
+
+            )}
+          </div>
         </div>
-      </div>
       )}
 
       <div className="w-screen text-center border-t-2 mt-10">
@@ -116,7 +115,7 @@ const Home = () => {
             to="/comments" />
           <p className={styles.txtSecundaryColor}>Comparte tu experiencia laboral y danos una visión de cómo se trabaja en la empresa</p>
         </div>
-        <div
+        {/* <div
           className={styles.card}
           onClick={() => handleNavigate("/vacancy")}
         >
@@ -125,7 +124,7 @@ const Home = () => {
           <Link
             to="/vacancy" />
           <p className={styles.txtSecundaryColor}>Verifica las vacancias disponibles más recientes publicadas por las empresas</p>
-        </div>
+        </div> */}
       </div>
     </div >
   );
