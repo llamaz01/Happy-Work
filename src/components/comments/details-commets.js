@@ -48,14 +48,16 @@ const DetailsComments = () => {
       <div className={`text-white p-4 max-w-4xl mx-auto ${styles.bgDetailsComments}`}>
         <div className="flex justify-between items-start space-x-8">
           <div>
-            <h1 className="text-2xl font-bold break-words">{comments.company?.name || "Cargando empresa..."}</h1>
+            <h1 className="text-gray-900 text-2xl font-bold break-words">{comments.company?.name || "Cargando empresa..."}</h1>
+            <h1 className="text-gray-800 mt-4">Descripción General:</h1>
             <h4 className="text-gray-400 break-words">{comments.company?.description || "Sin descripción disponible."}</h4>
+            <h1 className="text-gray-800 mt-4">Puntuación General:</h1>
+            <div className="flex items-baseline space-x-4">
+              <span className="text-purple-800 text-4xl font-bold">{comments.company?.overallAverage || "0.0"}</span>
+              <RenderStars rating={comments.company?.overallAverage || 0} />
+            </div>
           </div>
-          <div className="flex items-center space-x-4">
-            <RenderStars rating={comments.company?.overallAverage || 0} />
-            <span className="text-gray-400"><strong>{comments.company?.overallAverage || "0.0"}</strong></span>
 
-          </div>
         </div>
       </div>
 
