@@ -1,3 +1,4 @@
 .bgDetailsComments {
-  background-color: #44546c;
+  background-color: white;
+  box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.2);
 }
