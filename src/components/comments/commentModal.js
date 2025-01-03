@@ -255,10 +255,10 @@ const CommentModal = ({ empresas, onClose, onSubmit }) => {
                 precision={1}
                 sx={{
                   "& .MuiRating-iconFilled": {
-                    color: "gold",
+                    color: "purple",
                   },
                   "& .MuiRating-iconHover": {
-                    color: "gold",
+                    color: "purple",
                   },
                   "& .MuiRating-iconEmpty": {
                     color: "gray",
