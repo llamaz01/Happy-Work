@@ -81,7 +81,7 @@ const RegisterCompany = () => {
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Imagen contenedor con animación */}
         <ImageWithAnimation
-          imageUrl="/image/empoderatuvoz.gif"
+          imageUrl="/image/empoderatuvoz.png"
           text="Empodera tu voz,<br/> <strong>mejora tu trabajo</strong>"
         />
 
@@ -91,10 +91,10 @@ const RegisterCompany = () => {
         >
           <div className="w-full max-w-md border-2 border-gray-100 rounded-lg p-4">
             <img src="/image/logo.png" alt="logo" />
-            <h3 className="text-lg font-semibold mt-4 text-blue-950">
+            <h3 className="text-lg font-semibold mt-4 text-purple-950">
               Registrar
             </h3>
-            <h3 className="text-sm mt-3 text-blue-950">Cuenta Empresarial</h3>
+            <h3 className="text-sm mt-3 text-purple-950">Cuenta Empresarial</h3>
             <hr className="my-4 border-t-2 border-gray-100" />
 
             <div className="text-red-500 text-sm mt-2">
@@ -148,7 +148,7 @@ const RegisterCompany = () => {
             />
 
             <button
-              className="w-full p-2 rounded-xl bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 border border-blue-500 hover:border-transparent"
+              className="w-full p-2 rounded-xl bg-transparent hover:bg-purple-600 text-purple-600 font-semibold hover:text-white py-1 px-8 border border-purple-600 hover:border-transparent"
               onClick={onSubmit}
               disabled={isLoading}
             >
@@ -162,7 +162,7 @@ const RegisterCompany = () => {
                 <span className="inline">
                   <a
                     href="/auth/login"
-                    className="underline text-blue-950 font-semibold"
+                    className="underline text-purple-950 font-semibold"
                   >
                     {" "}
                     Iniciar Sesión!

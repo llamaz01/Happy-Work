@@ -120,7 +120,7 @@ const Comments = () => {
 
                   {empresa.totalComments > 0 ? (
                     <button
-                      className="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors duration-300"
+                      className="mt-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-300"
                       onClick={() => navigate(`/commets/detailscompany/${empresa.id}`)}
                     >
                       {empresa.totalComments === 1
